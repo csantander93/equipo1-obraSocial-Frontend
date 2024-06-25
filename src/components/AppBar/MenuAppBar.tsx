@@ -11,8 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
 import DoctorList from '../medicalRecord/DoctorList';
-import TurnosComponent from '../Turnos/TurnosComponent';
-import { DoctorProvider } from '../../contexts/DoctorContext/DoctorContext';
+import AppointmentList from '../Appointments/AppointmentsList';
 import { useAuth } from '../../contexts/UserContext/AuthContext';
 
 export default function MenuAppBar() {
@@ -49,7 +48,6 @@ export default function MenuAppBar() {
   };
 
   return (
-    <DoctorProvider>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
@@ -102,8 +100,7 @@ export default function MenuAppBar() {
           </Toolbar>
         </AppBar>
         {showDoctorList && <DoctorList />} {/* Muestra DoctorList si showDoctorList es true */}
-        {showTurnos && <TurnosComponent />} {/* Muestra TurnosComponent si showTurnos es true */}
+        {showTurnos && <AppointmentList />} {/* Muestra TurnosComponent si showTurnos es true */}
       </Box>
-    </DoctorProvider>
   );
 }
