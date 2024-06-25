@@ -1,0 +1,107 @@
+/* Register.css */
+
+.div-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-image: url("../../../../public/imgs/medical.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.FormDiv {
+  width: 420px;
+  height: max-content;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(238, 238, 238, 0.8);
+  border-radius: 10px;
+  margin-top: 50px; /* Ajuste para el margen superior */
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.Title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00846b;
+  font-size: 1.5rem; /* Ajuste del tamaño de fuente */
+}
+
+.Label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333; /* Color de texto principal */
+}
+
+.InputContainer {
+  position: relative;
+}
+
+.Input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  outline: none; /* Elimina el contorno al enfocar */
+  transition: border-color 0.3s ease; /* Transición suave del color del borde */
+}
+
+.Input:focus {
+  border-color: rgb(0, 217, 255);
+}
+
+.IconViewPass {
+  position: absolute;
+  top: 30%;
+  right: -10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888; /* Color de icono */
+}
+
+.IconViewPass:hover {
+  background-color: #d6d6d6;
+  border-radius: 5px;
+}
+
+.Button {
+  width: 100%;
+  padding: 12px;
+  background-color: #088d44;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.Button:hover {
+  background-color: #39ef88;
+}
+
+.Button:active {
+  background-color: #39ef88;
+}
+
+.LinkButton {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem; /* Ajuste del tamaño de fuente */
+  color: #082b8d;
+}
+
+.LinkButton:hover {
+  color: #6f8dfb;
+}

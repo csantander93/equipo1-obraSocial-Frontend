@@ -1,0 +1,60 @@
+/* styles.css (o cualquier nombre que prefieras) */
+
+/* Estilos para el contenedor principal */
+.doctor-list-container {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  max-width: 600px; /* Ancho máximo para centrar el contenido */
+}
+
+/* Estilos para la lista de doctores */
+.doctor-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Estilos para cada elemento de doctor */
+.doctor-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Estilos para los títulos */
+.doctor-name {
+  margin: 0;
+  font-size: 1.4em;
+  color: #333;
+}
+
+.doctor-specialization {
+  margin: 5px 0;
+  font-size: 1em;
+  color: #666;
+}
+
+.doctor-info {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #888;
+}
+
+/* Efecto hover para destacar el elemento */
+.doctor-item:hover {
+  background-color: #e0e0e0;
+}
+
+/* Estilos para el mensaje de lista de especialistas */
+.specialists-message {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: #007bff; /* Azul resaltado */
+}
