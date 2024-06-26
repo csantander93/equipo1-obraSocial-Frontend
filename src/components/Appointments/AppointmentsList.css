@@ -8,36 +8,19 @@
 }
 
 .appointment-list {
-  list-style-type: none;
-  padding: 0;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-.appointment-item {
-  padding: 15px;
-  margin-bottom: 15px;
-  background-color: #fff;
+.appointment-list th,
+.appointment-list td {
   border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
-}
-
-.appointment-item p {
-  margin: 5px 0;
-}
-
-.appointment-doctor,
-.appointment-specialization,
-.appointment-location,
-.appointment-datetime,
-.appointment-reason {
-  font-size: 16px;
-}
-
-.appointment-item strong {
-  color: #333;
-}
-
-h1 {
+  padding: 10px;
   text-align: center;
-  color: #333;
+}
+
+.appointment-list th {
+  background-color: #007bff;
+  color: white;
 }

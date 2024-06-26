@@ -2,12 +2,13 @@ import React, { createContext, useState, useEffect, useCallback } from 'react';
 import AppointmentService from '../../services/AppointmentService';
 import { TAppointment } from '../../models/types/entities/TAppointment';
 import { useAuth } from '../UserContext/AuthContext';
+import { TUser } from '../../models/types/entities/TUser';
 
 interface AppointmentContextProps {
   appointments: TAppointment[];
   loading: boolean;
   error: string | null;
-  fetchAppointments: (userId: number) => Promise<void>; // Acepta un userId como parámetro
+  fetchAppointments: (user: TUser) => Promise<void>; // Acepta un userId como parámetro
 }
 
 export const AppointmentContext = createContext<AppointmentContextProps>({
@@ -23,22 +24,21 @@ export const AppointmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [error, setError] = useState<string | null>(null);
   const { user } = useAuth();
 
-
-  const fetchAppointments = useCallback(async (userId: number) => {
+  const fetchAppointments = useCallback(async (user: TUser) => {
     setLoading(true);
     try {
-      const data = await AppointmentService.getAppointmentList(userId);
+      const data = await AppointmentService.getAppointmentList(user);
       setAppointments(data);
     } catch (error) {
       setError('Error fetching appointments');
     } finally {
-      setLoading(false);    
+      setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    if (user && user.idUser) { // Asegúrate de que user y user.idUser estén definidos
-      fetchAppointments(user.idUser);
+    if (user && user.id) {
+      fetchAppointments(user);
     }
   }, [user, fetchAppointments]);
 
