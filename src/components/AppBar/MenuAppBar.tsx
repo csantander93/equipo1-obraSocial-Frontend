@@ -63,7 +63,6 @@ export default function MenuAppBar() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               {/* Aquí puedes agregar el título o nombre de la aplicación */}
             </Typography>
-            <Button color="inherit">Recetas</Button>
             <Button color="inherit" onClick={handleCartillaMedica}>Cartilla Medica</Button>
             <Button color="inherit" onClick={handleTurnos}>Turnos</Button>
             {auth && (
