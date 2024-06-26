@@ -2,10 +2,13 @@ import React, { useContext, useEffect } from 'react';
 import { AppointmentContext } from '../../contexts/AppointmentContext/AppointmentContext';
 import { useAuth } from '../../contexts/UserContext/AuthContext';
 import './AppointmentsList.css';
+import { MdDeleteForever } from "react-icons/md";
+import { FiEdit } from "react-icons/fi";
+import { FaFileDownload } from "react-icons/fa";
 
 const AppointmentList: React.FC = () => {
   const { appointments, loading, error, fetchAppointments } = useContext(AppointmentContext);
-  const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
+  const { user } = useAuth();
 
   useEffect(() => {
     if (user && user.id) {
@@ -33,6 +36,7 @@ const AppointmentList: React.FC = () => {
             <th>Lugar de atención</th>
             <th>Fecha y Hora</th>
             <th>Motivo de consulta</th>
+            <th>Recetas</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -46,8 +50,22 @@ const AppointmentList: React.FC = () => {
               <td>{new Date(appointment.fechaHora).toLocaleString()}</td>
               <td>{appointment.motivoConsulta}</td>
               <td>
-                <span>Acciones</span>
+                {appointment.idReceta === 0 ? (
+                  <span>No hay receta</span>
+                ) : (
+                  <FaFileDownload className="recipe-icon" />
+                )}
               </td>
+              {appointment.idReceta === 0 ? (
+                <td>
+                <div className="action-icons">
+                  <FiEdit className="edit-icon" />
+                  <MdDeleteForever className="delete-icon" />
+                </div>
+              </td>
+              ) : (
+                <td>Finalizado</td>
+              )}
             </tr>
           ))}
         </tbody>

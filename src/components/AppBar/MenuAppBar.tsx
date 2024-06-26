@@ -43,8 +43,8 @@ export default function MenuAppBar() {
   };
 
   const handleTurnos = () => {
-    setShowTurnos(!showTurnos); // Alterna la visibilidad de TurnosComponent
-    setShowDoctorList(false); // Oculta DoctorList si se muestra TurnosComponent
+    setShowTurnos(!showTurnos); // Asegúrate de que setShowTurnos cambie el estado
+    setShowDoctorList(false);
   };
 
   return (
