@@ -46,7 +46,6 @@ const AppointmentList: React.FC = () => {
               <td>{new Date(appointment.fechaHora).toLocaleString()}</td>
               <td>{appointment.motivoConsulta}</td>
               <td>
-                {/* Aquí puedes colocar los iconos de acciones como editar, borrar, etc. */}
                 <span>Acciones</span>
               </td>
             </tr>
