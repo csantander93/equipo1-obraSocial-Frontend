@@ -1,5 +1,6 @@
 /* Asegúrate de que el html y body llenen todo el alto de la ventana */
 html, body {
+  background-color:#ddd;
   height: 100%;
   margin: 0;
   padding: 0;

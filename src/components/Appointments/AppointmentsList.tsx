@@ -1,14 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AppointmentContext } from '../../contexts/AppointmentContext/AppointmentContext';
 import { useAuth } from '../../contexts/UserContext/AuthContext';
 import './AppointmentsList.css';
-import { MdDeleteForever } from "react-icons/md";
-import { FiEdit } from "react-icons/fi";
-import { FaFileDownload } from "react-icons/fa";
+import { MdDeleteForever } from 'react-icons/md';
+import { FiEdit } from 'react-icons/fi';
+import { FaFileDownload } from 'react-icons/fa';
+import RecipeComponent from '../recipe/Recipe';
 
 const AppointmentList: React.FC = () => {
   const { appointments, loading, error, fetchAppointments } = useContext(AppointmentContext);
   const { user } = useAuth();
+  const [selectedRecipeId, setSelectedRecipeId] = useState<number | null>(null); // Estado para almacenar el ID de la receta seleccionada
 
   useEffect(() => {
     if (user && user.id) {
@@ -23,6 +25,16 @@ const AppointmentList: React.FC = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  // Función para manejar la selección de receta y mostrar el popup
+  const handleShowRecipe = (idReceta: number) => {
+    setSelectedRecipeId(idReceta);
+  };
+
+  // Función para cerrar el popup de receta
+  const handleCloseRecipe = () => {
+    setSelectedRecipeId(null);
+  };
 
   return (
     <div className="appointment-list-container">
@@ -53,16 +65,20 @@ const AppointmentList: React.FC = () => {
                 {appointment.idReceta === 0 ? (
                   <span>No hay receta</span>
                 ) : (
-                  <FaFileDownload className="recipe-icon" />
+                  <FaFileDownload
+                    className="recipe-icon"
+                    onClick={() => handleShowRecipe(appointment.idReceta)} // Mostrar el popup al hacer clic
+                    style={{ cursor: 'pointer' }}
+                  />
                 )}
               </td>
               {appointment.idReceta === 0 ? (
                 <td>
-                <div className="action-icons">
-                  <FiEdit className="edit-icon" />
-                  <MdDeleteForever className="delete-icon" />
-                </div>
-              </td>
+                  <div className="action-icons">
+                    <FiEdit className="edit-icon" />
+                    <MdDeleteForever className="delete-icon" />
+                  </div>
+                </td>
               ) : (
                 <td>Finalizado</td>
               )}
@@ -70,6 +86,11 @@ const AppointmentList: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Renderizar RecipeComponent como un popup si hay una receta seleccionada */}
+      {selectedRecipeId && (
+        <RecipeComponent idRecipe={selectedRecipeId} onClose={handleCloseRecipe} />
+      )}
     </div>
   );
 };
