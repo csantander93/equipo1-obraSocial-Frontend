@@ -1,6 +1,6 @@
 export type TUser = {
 
-  idUser: number;
+  id: number;
   email: string;
   rolUsuario: string;
   token: string;

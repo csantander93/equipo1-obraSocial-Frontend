@@ -3,11 +3,10 @@ import MenuAppBar from '../AppBar/MenuAppBar';
 import Footer from '../footer/Footer';
 import './Home.css'; // Asegúrate de importar los estilos
 import { DoctorProvider } from '../../contexts/DoctorContext/DoctorContext';
-import { AppointmentProvider } from '../../contexts/AppointmentContext/AppointmentContext';
 
 const Home: React.FC = () => {
   return (
-    <AppointmentProvider>
+
     <DoctorProvider>
     <div className="wrapper">
       <header>
@@ -21,7 +20,7 @@ const Home: React.FC = () => {
       </footer>
     </div>
     </DoctorProvider>
-    </AppointmentProvider>
+
   );
 }
 
