@@ -80,7 +80,7 @@ const AppointmentList: React.FC = () => {
                   </div>
                 </td>
               ) : (
-                <td>Finalizado</td>
+                <td>Turno Finalizado</td>
               )}
             </tr>
           ))}
