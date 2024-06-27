@@ -10,7 +10,7 @@
   /* Elimina el padding por defecto del body */
   overflow: hidden;
   /* Evita que haya scroll horizontal o vertical */
-  background-image: url("../../../../public/imgs/medical.jpg");
+  background-image: url("../../../../../public/imgs/medical.jpg");
   background-size: contain;
   background-repeat: no-repeat;
   /* Evita que la imagen se repita */

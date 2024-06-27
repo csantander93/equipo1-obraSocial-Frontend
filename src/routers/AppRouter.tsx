@@ -2,8 +2,8 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { protectedRoutes } from '../views/private/ProtectedRoutes';
 import { AuthProvider } from '../contexts/UserContext/AuthContext';
 import PrivateRoutes from '../views/private/PrivateRoutes';
-import Login from '../components/main/login/Login';
-import Register from '../components/main/register/Register';
+import Login from '../views/public/main/login/Login';
+import Register from '../views/public/main/register/Register';
 
 export default function AppRouter() {
   return (

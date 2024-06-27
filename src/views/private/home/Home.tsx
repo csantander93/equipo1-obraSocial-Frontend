@@ -1,9 +1,9 @@
 import React from 'react';
-import MenuAppBar from '../AppBar/MenuAppBar';
-import Footer from '../footer/Footer';
+import MenuAppBar from '../../../components/AppBar/MenuAppBar';
+import Footer from '../../../components/footer/Footer';
 import './Home.css'; // Asegúrate de importar los estilos
-import { DoctorProvider } from '../../contexts/DoctorContext/DoctorContext';
-import { AppointmentProvider } from '../../contexts/AppointmentContext/AppointmentContext';
+import { DoctorProvider } from '../../../contexts/DoctorContext/DoctorContext';
+import { AppointmentProvider } from '../../../contexts/AppointmentContext/AppointmentContext';
 
 const Home: React.FC = () => {
   return (

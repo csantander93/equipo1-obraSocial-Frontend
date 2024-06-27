@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../contexts/UserContext/AuthContext';
-import { TSignIn } from '../../../models/types/requests/TSignIn';
+import { useAuth } from '../../../../contexts/UserContext/AuthContext';
+import { TSignIn } from '../../../../models/types/requests/TSignIn';
 import { FaRegUser, FaLock, FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import "./Login.css"

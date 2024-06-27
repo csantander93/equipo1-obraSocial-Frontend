@@ -1,4 +1,4 @@
-import Home from '../../components/home/Home';
+import Home from "./home/Home";
 
 export const protectedRoutes = [
   { path: "/home", component: Home, name: "Home" }

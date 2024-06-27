@@ -9,7 +9,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-image: url("../../../../public/imgs/medical.jpg");
+  background-image: url("../../../../../public/imgs/medical.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
