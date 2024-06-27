@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import DoctorList from '../medicalRecord/DoctorList';
 import AppointmentList from '../Appointments/AppointmentsList';
 import { useAuth } from '../../contexts/UserContext/AuthContext';
+import LogoAlMedin from '../../images/LogoAlMedin.png'; 
 
 export default function MenuAppBar() {
   const [auth] = React.useState(true);
@@ -59,7 +60,9 @@ export default function MenuAppBar() {
               sx={{ mr: 2 }}
             >
               <MenuIcon />
+              
             </IconButton>
+            <img src={LogoAlMedin} alt="Logo" style={{ height: 80, marginRight: 10 }} />
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               {/* Aquí puedes agregar el título o nombre de la aplicación */}
             </Typography>
