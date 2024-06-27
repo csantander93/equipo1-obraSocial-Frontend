@@ -6,6 +6,10 @@ import { MdDeleteForever } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
 import { FaFileDownload } from 'react-icons/fa';
 import RecipeComponent from '../recipe/Recipe';
+import AppointmentService from '../../services/AppointmentService';
+import { TRecipeDelete } from '../../models/types/requests/TRecipeDelete';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const AppointmentList: React.FC = () => {
   const { appointments, loading, error, fetchAppointments } = useContext(AppointmentContext);
@@ -34,6 +38,34 @@ const AppointmentList: React.FC = () => {
   // Función para cerrar el popup de receta
   const handleCloseRecipe = () => {
     setSelectedRecipeId(null);
+  };
+
+  const handleDeleteAppointment = async (idTurno: number) => {
+    const dto: TRecipeDelete = { idTurno };
+    try {
+      await AppointmentService.darBajaTurno(dto);
+      if (user) { // Asegurarse de que user no sea null antes de llamar a fetchAppointments
+        fetchAppointments(user); // Actualiza la lista de turnos después de eliminar
+      }
+    } catch (error) {
+      console.error('Error deleting appointment:', error);
+    }
+  };
+
+  const confirmDelete = (idTurno: number) => {
+    confirmAlert({
+      title: 'Atención',
+      message: '¿Está seguro que quiere eliminar el turno?',
+      buttons: [
+        {
+          label: 'Si',
+          onClick: () => handleDeleteAppointment(idTurno),
+        },
+        {
+          label: 'No',
+        },
+      ],
+    });
   };
 
   return (
@@ -76,7 +108,11 @@ const AppointmentList: React.FC = () => {
                 <td>
                   <div className="action-icons">
                     <FiEdit className="edit-icon" />
-                    <MdDeleteForever className="delete-icon" />
+                    <MdDeleteForever 
+                      className="delete-icon"
+                      onClick={() => confirmDelete(appointment.idTurno)}
+                      style={{ cursor: 'pointer' }}
+                    />
                   </div>
                 </td>
               ) : (
