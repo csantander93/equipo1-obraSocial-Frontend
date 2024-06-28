@@ -1,4 +1,3 @@
-// DoctorContext.tsx
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import DoctorService from '../../services/DoctorService';
 import { TDoctor } from '../../models/types/entities/TDoctor';
