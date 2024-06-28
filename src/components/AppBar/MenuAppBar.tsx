@@ -10,20 +10,15 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
-import DoctorList from '../medicalRecord/DoctorList';
-import AppointmentList from '../Appointments/AppointmentsList';
 import { useAuth } from '../../contexts/UserContext/AuthContext';
-import LogoAlMedin from '../../images/LogoAlMedin.png'; 
+import LogoAlMedin from '../../images/LogoAlMedin.png';
 
 export default function MenuAppBar() {
   const [auth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [showDoctorList, setShowDoctorList] = React.useState(false); // Estado para controlar la visibilidad de DoctorList
-  const [showTurnos, setShowTurnos] = React.useState(false); // Estado para controlar la visibilidad de TurnosComponent
-
-  const { logout } = useAuth(); // Utiliza useAuth para obtener la función logout
   const navigate = useNavigate(); // Utiliza useNavigate para redirigir
 
+  const { logout } = useAuth();
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -39,70 +34,65 @@ export default function MenuAppBar() {
   };
 
   const handleCartillaMedica = () => {
-    setShowDoctorList(!showDoctorList); // Alterna la visibilidad de DoctorList
-    setShowTurnos(false); // Oculta TurnosComponent si se muestra DoctorList
+    navigate('/cartillaMedica'); // Navega a la ruta de Cartilla Medica
   };
 
   const handleTurnos = () => {
-    setShowTurnos(!showTurnos); // Asegúrate de que setShowTurnos cambie el estado
-    setShowDoctorList(false);
+    navigate('/AppointmentList'); // Navega a la ruta de Turnos
   };
 
   return (
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-              
-            </IconButton>
-            <img src={LogoAlMedin} alt="Logo" style={{ height: 80, marginRight: 10 }} />
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {/* Aquí puedes agregar el título o nombre de la aplicación */}
-            </Typography>
-            <Button color="inherit" onClick={handleCartillaMedica}>Cartilla Medica</Button>
-            <Button color="inherit" onClick={handleTurnos}>Turnos</Button>
-            {auth && (
-              <div>
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleLogout}>Log out</MenuItem>
-                </Menu>
-              </div>
-            )}
-          </Toolbar>
-        </AppBar>
-        {showDoctorList && <DoctorList />} {/* Muestra DoctorList si showDoctorList es true */}
-        {showTurnos && <AppointmentList />} {/* Muestra TurnosComponent si showTurnos es true */}
-      </Box>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <img src={LogoAlMedin} alt="Logo" style={{ height: 80, marginRight: 10 }} />
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            {/* Aquí puedes agregar el título o nombre de la aplicación */}
+          </Typography>
+          <Button color="inherit" onClick={handleCartillaMedica}>Cartilla Medica</Button>
+          <Button color="inherit" onClick={handleTurnos}>Turnos</Button>
+          {auth && (
+            <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleLogout}>Log out</MenuItem>
+              </Menu>
+            </div>
+          )}
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }
