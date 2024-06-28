@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import DoctorList from '../medicalRecord/DoctorList';
 import AppointmentList from '../Appointments/AppointmentsList';
 import { useAuth } from '../../contexts/UserContext/AuthContext';
-import LogoAlMedin from '../../images/LogoAlMedin.png'; 
+import LogoAlMedin from '../../images/LogoAlMedin.png';
 
 export default function MenuAppBar() {
   const [auth] = React.useState(true);
