@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppointmentContext } from '../../contexts/AppointmentContext/AppointmentContext';
 import { useAuth } from '../../contexts/UserContext/AuthContext';
 import './AppointmentsList.css';
@@ -14,7 +15,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 const AppointmentList: React.FC = () => {
   const { appointments, loading, error, fetchAppointments } = useContext(AppointmentContext);
   const { user } = useAuth();
-  const [selectedRecipeId, setSelectedRecipeId] = useState<number | null>(null); // Estado para almacenar el ID de la receta seleccionada
+  const [selectedRecipeId, setSelectedRecipeId] = useState<number | null>(null);
+  const navigate = useNavigate(); // Use navigate for navigation
 
   useEffect(() => {
     if (user && user.id) {
@@ -30,12 +32,12 @@ const AppointmentList: React.FC = () => {
     return <div>Error: {error}</div>;
   }
 
-  // Función para manejar la selección de receta y mostrar el popup
+  // Function to handle showing the recipe
   const handleShowRecipe = (idReceta: number) => {
     setSelectedRecipeId(idReceta);
   };
 
-  // Función para cerrar el popup de receta
+  // Function to handle closing the recipe
   const handleCloseRecipe = () => {
     setSelectedRecipeId(null);
   };
@@ -44,8 +46,8 @@ const AppointmentList: React.FC = () => {
     const dto: TRecipeDelete = { idTurno };
     try {
       await AppointmentService.darBajaTurno(dto);
-      if (user) { // Asegurarse de que user no sea null antes de llamar a fetchAppointments
-        fetchAppointments(user); // Actualiza la lista de turnos después de eliminar
+      if (user) {
+        fetchAppointments(user);
       }
     } catch (error) {
       console.error('Error deleting appointment:', error);
@@ -68,9 +70,22 @@ const AppointmentList: React.FC = () => {
     });
   };
 
+  // Function to navigate to the NewAppointment component
+  const handleRequestAppointment = () => {
+    navigate('/NewAppointment');
+  };
+
   return (
     <div className="appointment-list-container">
-      <h1>Lista de Turnos</h1>
+      <div className="header-container">
+        <h1>Lista de Turnos</h1>
+        <button
+          className="request-appointment-button"
+          onClick={handleRequestAppointment}
+        >
+          Solicitar turno
+        </button>
+      </div>
       <table className="appointment-list">
         <thead>
           <tr>
@@ -99,7 +114,7 @@ const AppointmentList: React.FC = () => {
                 ) : (
                   <FaFileDownload
                     className="recipe-icon"
-                    onClick={() => handleShowRecipe(appointment.idReceta)} // Mostrar el popup al hacer clic
+                    onClick={() => handleShowRecipe(appointment.idReceta)}
                     style={{ cursor: 'pointer' }}
                   />
                 )}
@@ -108,7 +123,7 @@ const AppointmentList: React.FC = () => {
                 <td>
                   <div className="action-icons">
                     <FiEdit className="edit-icon" />
-                    <MdDeleteForever 
+                    <MdDeleteForever
                       className="delete-icon"
                       onClick={() => confirmDelete(appointment.idTurno)}
                       style={{ cursor: 'pointer' }}
@@ -123,7 +138,7 @@ const AppointmentList: React.FC = () => {
         </tbody>
       </table>
 
-      {/* Renderizar RecipeComponent como un popup si hay una receta seleccionada */}
+      {/* Render RecipeComponent as a popup if a recipe is selected */}
       {selectedRecipeId && (
         <RecipeComponent idRecipe={selectedRecipeId} onClose={handleCloseRecipe} />
       )}

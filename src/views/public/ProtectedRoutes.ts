@@ -1,5 +1,9 @@
-import Home from "../private/home/Home";
+import AppointmentList from "../../components/Appointments/AppointmentsList";
+import DoctorList from "../../components/medicalRecord/DoctorList";
+import NewAppointment from "../../components/Appointments/NewAppointment";
 
 export const protectedRoutes = [
-  { path: "/home", component: Home, name: "Home" }
+  { path: "/AppointmentList", component: AppointmentList, name: "AppointmentList" },
+  { path: "/DoctorList", component: DoctorList, name: "DoctorList" },
+  { path: "/NewAppointment", component: NewAppointment, name: "NewAppointment" }
 ];
