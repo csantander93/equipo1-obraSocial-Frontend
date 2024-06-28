@@ -34,7 +34,7 @@ export default function MenuAppBar() {
   };
 
   const handleCartillaMedica = () => {
-    navigate('/cartillaMedica'); // Navega a la ruta de Cartilla Medica
+    navigate('/DoctorList'); // Navega a la ruta de Cartilla Medica
   };
 
   const handleTurnos = () => {
@@ -45,15 +45,6 @@ export default function MenuAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <img src={LogoAlMedin} alt="Logo" style={{ height: 80, marginRight: 10 }} />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {/* Aquí puedes agregar el título o nombre de la aplicación */}
