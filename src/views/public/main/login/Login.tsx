@@ -26,7 +26,7 @@ const Login: React.FC = () => {
     setErrorMessage(null); // Resetear el mensaje de error antes de intentar iniciar sesión
     const success = await login(formData);
     if (success) {
-      navigate('/home');
+      navigate('/PageWelcome');
     } else {
       setErrorMessage('Usuario y/o contraseña incorrectos');
     }

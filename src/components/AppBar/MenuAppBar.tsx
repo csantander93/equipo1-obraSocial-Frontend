@@ -40,11 +40,20 @@ export default function MenuAppBar() {
     navigate('/AppointmentList'); // Navega a la ruta de Turnos
   };
 
+  const handleLogoClick = () => {
+    navigate('/PageWelcome'); // Navega a la ruta de bienvenida (PageWelcome)
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{backgroundColor: '#547da7'}}>
         <Toolbar>
-          <img src={LogoAlMedin} alt="Logo" style={{ height: 80, marginRight: 10 }} />
+          <img 
+            src={LogoAlMedin} 
+            alt="Logo" 
+            style={{ height: 80, marginRight: 10, cursor: 'pointer' }} 
+            onClick={handleLogoClick} 
+          />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {/* Aquí puedes agregar el título o nombre de la aplicación */}
           </Typography>
