@@ -6,6 +6,7 @@ import './AppointmentsList.css';
 import { MdDeleteForever } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
 import { FaFileDownload } from 'react-icons/fa';
+import { FaPlus } from "react-icons/fa";
 import RecipeComponent from '../recipe/Recipe';
 import AppointmentService from '../../services/AppointmentService';
 import { TRecipeDelete } from '../../models/types/requests/TRecipeDelete';
@@ -83,7 +84,7 @@ const AppointmentList: React.FC = () => {
           className="request-appointment-button"
           onClick={handleRequestAppointment}
         >
-          Solicitar turno
+          <FaPlus style={{ verticalAlign: 'middle', color: '#5ecc6d', marginRight: '5px', fontSize: '15px' }} /> Solicitar turno
         </button>
       </div>
       <table className="appointment-list">

@@ -41,7 +41,7 @@ const Login: React.FC = () => {
       <div className='principal-box'>
         <div className='form-div'>
           <form onSubmit={handleSubmit}>
-            <h1 className='title'>Bienvenido al Sistema Integral de Almedin Obra Social</h1>
+            <h1 className='title'>Bienvenido al Sistema Integral de AlMedin Obra Social</h1>
             <p className='description'>Ingresa tus datos para continuar</p>
             <label className='label'>Correo electrónico</label>
             <div className='input-container'>

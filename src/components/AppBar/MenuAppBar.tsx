@@ -42,7 +42,7 @@ export default function MenuAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{backgroundColor: '#547da7'}}>
         <Toolbar>
           <img src={LogoAlMedin} alt="Logo" style={{ height: 80, marginRight: 10 }} />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

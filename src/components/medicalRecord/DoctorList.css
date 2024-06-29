@@ -30,8 +30,9 @@
 /* Estilos para los títulos */
 .doctor-name {
   margin: 0;
-  font-size: 1.4em;
+  font-size: 1em;
   color: #333;
+  font-weight: bold;
 }
 
 .doctor-specialization {
@@ -42,8 +43,8 @@
 
 .doctor-info {
   margin: 5px 0;
-  font-size: 0.9em;
-  color: #888;
+  font-size: 1em;
+  color: #666;
 }
 
 /* Efecto hover para destacar el elemento */
@@ -55,6 +56,6 @@
 .specialists-message {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.1em;
+  font-size: 1em;
   color: #007bff; /* Azul resaltado */
 }
