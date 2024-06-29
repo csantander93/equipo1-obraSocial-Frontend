@@ -35,7 +35,7 @@ export default class AppointmentService {
 
   static async assignAppointmentUser(dto: TAppointmentAssign): Promise<void> {
     try {
-      await httpServer.put(`${this.appointmentsController}/asignarTurno`, { data: dto });
+      await httpServer.put(`${this.appointmentsController}/asignarTurno`, dto );
     } catch (error) {
       throw error;
     }
