@@ -1,5 +1,6 @@
 .new-appointment-container {
   width: 80%;
+  max-width: 500px;
   margin: 50px auto;
   padding: 20px;
   background-color: #f8f8f8;
@@ -9,34 +10,63 @@
 
 .new-appointment-container h1 {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .new-appointment-container form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Alinea los elementos a la izquierda */
+  gap: 20px; /* Añade un espacio entre cada elemento del formulario */
+  width: 100%;
 }
 
 .new-appointment-container label {
-  margin-bottom: 10px;
+  font-weight: bold;
 }
 
-.new-appointment-container select {
-  margin-bottom: 20px;
+.new-appointment-container select,
+.new-appointment-container .react-datepicker-wrapper input,
+.new-appointment-container button {
+  width: 100%; /* Asegura que los elementos ocupen todo el ancho disponible */
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.new-appointment-container .react-datepicker-wrapper {
+  width: 100%;
 }
 
 .new-appointment-container button {
-  padding: 10px 20px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 
 .new-appointment-container button:hover {
   background-color: #0056b3;
 }
+
+/* Custom styles for DatePicker */
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.new-appointment-container textarea {
+  width: 100%;
+  height: 80px; /* Altura fija deseada */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  resize: none;
+  font-family: sans-serif; /* Evita que se pueda redimensionar */
+}
+

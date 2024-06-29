@@ -1,6 +1,7 @@
 import { httpServer } from '../clients/server';
 import { TAppointment } from '../models/types/entities/TAppointment';
 import { TUser } from '../models/types/entities/TUser';
+import { TAppointmentAssign } from '../models/types/requests/TAppointmentAssign';
 import { TRecipeDelete } from '../models/types/requests/TRecipeDelete'; 
 
 export default class AppointmentService {
@@ -15,9 +16,26 @@ export default class AppointmentService {
     }
   }
 
-  static async darBajaTurno(dto: TRecipeDelete): Promise<void> {
+  static async cancelAppointment(dto: TRecipeDelete): Promise<void> {
     try {
       await httpServer.delete(`${this.appointmentsController}/darBajaTurno`, { data: dto });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async getAppointmentListDoctor(idMedico: number): Promise<TAppointment[]> {
+    try {
+      const response = await httpServer.get<TAppointment[]>(`${this.appointmentsController}/traerTurnosDisponiblesMedico/${idMedico}`);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async assignAppointmentUser(dto: TAppointmentAssign): Promise<void> {
+    try {
+      await httpServer.put(`${this.appointmentsController}/asignarTurno`, { data: dto });
     } catch (error) {
       throw error;
     }

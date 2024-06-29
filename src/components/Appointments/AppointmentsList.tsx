@@ -46,7 +46,7 @@ const AppointmentList: React.FC = () => {
   const handleDeleteAppointment = async (idTurno: number) => {
     const dto: TRecipeDelete = { idTurno };
     try {
-      await AppointmentService.darBajaTurno(dto);
+      await AppointmentService.cancelAppointment(dto);
       if (user) {
         fetchAppointmentsUser(user);
       }
