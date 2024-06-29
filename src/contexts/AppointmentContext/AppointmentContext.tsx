@@ -8,14 +8,14 @@ interface AppointmentContextProps {
   appointments: TAppointment[];
   loading: boolean;
   error: string | null;
-  fetchAppointments: (user: TUser) => Promise<void>; // Acepta un userId como parámetro
+  fetchAppointmentsUser: (user: TUser) => Promise<void>; // Acepta un userId como parámetro
 }
 
 export const AppointmentContext = createContext<AppointmentContextProps>({
   appointments: [],
   loading: true,
   error: null,
-  fetchAppointments: () => Promise.resolve(),
+  fetchAppointmentsUser: () => Promise.resolve(),
 });
 
 export const AppointmentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -24,10 +24,10 @@ export const AppointmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [error, setError] = useState<string | null>(null);
   const { user } = useAuth();
 
-  const fetchAppointments = useCallback(async (user: TUser) => {
+  const fetchAppointmentsUser = useCallback(async (user: TUser) => {
     setLoading(true);
     try {
-      const data = await AppointmentService.getAppointmentList(user);
+      const data = await AppointmentService.getAppointmentListUser(user);
       setAppointments(data);
     } catch (error) {
       setError('Error fetching appointments');
@@ -38,15 +38,15 @@ export const AppointmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   useEffect(() => {
     if (user && user.id) {
-      fetchAppointments(user);
+      fetchAppointmentsUser(user);
     }
-  }, [user, fetchAppointments]);
+  }, [user, fetchAppointmentsUser]);
 
   const contextValue: AppointmentContextProps = {
     appointments,
     loading,
     error,
-    fetchAppointments,
+    fetchAppointmentsUser,
   };
 
   return (

@@ -13,16 +13,16 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const AppointmentList: React.FC = () => {
-  const { appointments, loading, error, fetchAppointments } = useContext(AppointmentContext);
+  const { appointments, loading, error, fetchAppointmentsUser } = useContext(AppointmentContext);
   const { user } = useAuth();
   const [selectedRecipeId, setSelectedRecipeId] = useState<number | null>(null);
   const navigate = useNavigate(); // Use navigate for navigation
 
   useEffect(() => {
     if (user && user.id) {
-      fetchAppointments(user);
+      fetchAppointmentsUser(user);
     }
-  }, [user, fetchAppointments]);
+  }, [user, fetchAppointmentsUser]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -47,7 +47,7 @@ const AppointmentList: React.FC = () => {
     try {
       await AppointmentService.darBajaTurno(dto);
       if (user) {
-        fetchAppointments(user);
+        fetchAppointmentsUser(user);
       }
     } catch (error) {
       console.error('Error deleting appointment:', error);

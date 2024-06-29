@@ -5,7 +5,7 @@ import './Home.css'; // Asegúrate de importar los estilos
 import { DoctorProvider } from '../../../contexts/DoctorContext/DoctorContext';
 import { AppointmentProvider } from '../../../contexts/AppointmentContext/AppointmentContext';
 import { Route, Routes } from 'react-router-dom';
-import { protectedRoutes } from '../../public/ProtectedRoutes';
+import { protectedRoutes } from '../ProtectedRoutes';
 import { SpecialityProvider } from '../../../contexts/SpecialityContext/SpecialityContext';
 
 const Home: React.FC = () => {

@@ -6,7 +6,7 @@ import { TRecipeDelete } from '../models/types/requests/TRecipeDelete';
 export default class AppointmentService {
   private static appointmentsController = "/turnos";
 
-  static async getAppointmentList(user: TUser): Promise<TAppointment[]> {
+  static async getAppointmentListUser(user: TUser): Promise<TAppointment[]> {
     try {
       const response = await httpServer.get<TAppointment[]>(`${this.appointmentsController}/traerTurnosPorIdUsuario/${user.id}`);
       return response.data;
