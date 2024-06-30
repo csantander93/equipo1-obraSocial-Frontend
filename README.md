@@ -122,19 +122,21 @@ Asegúrate de tener Node.js y npm instalados en tu sistema.
 
 bash
 npm install
+
 Configurar las variables de entorno:
 Crea un archivo .env en la raíz del proyecto con las variables necesarias para la configuración. Ejemplo:
 
 bash
 REACT_APP_API_URL=http://localhost:8080/api
-Ejecutar la aplicación:
 
+Ejecutar la aplicación:
 bash
 npm start
-Compilar la aplicación para producción:
 
+Compilar la aplicación para producción:
 bash
 npm run build
+
 Contribuir
 Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
 
