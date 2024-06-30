@@ -139,9 +139,7 @@ https://github.com/csantander93/equipo1ObraSocialUMSA.git
 # Generación del esquema de la base de datos
 quarkus.hibernate-orm.database.generation=drop-and-create
 por el de:
-# Generación del esquema de la base de datos
 quarkus.hibernate-orm.database.generation=validate
-
 Esto para no borrar los datos que se modificaron.
 
 4. **Ejecutar la aplicación**:
@@ -158,7 +156,7 @@ npm run build
 
 Para interactuar con la página, puedes crear una cuenta seleccionando la opción de paciente y utilizando el DNI 12345678. Tanto el correo electrónico como la contraseña son a elección del usuario.
 
-URL de registro: http://localhost:8080/register
+URL de registro: http://localhost:3000/register
 Datos del paciente:
 DNI: 12345678
 Correo electrónico: A elección
@@ -168,7 +166,7 @@ Acceder a la aplicación:
 
 Después de crear tu cuenta, puedes iniciar sesión y empezar a interactuar con la aplicación.
 
-URL de inicio de sesión: http://localhost:8080/login
+URL de inicio de sesión: http://localhost:3000/login
 Correo electrónico: El que utilizaste al registrarte
 Contraseña: La que elegiste
 
