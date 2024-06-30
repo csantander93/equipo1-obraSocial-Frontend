@@ -114,7 +114,7 @@ Instrucciones para Configuración y Ejecución
 Clonar el repositorio:
 
 bash
-git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+git clone https://github.com/csantander93/equipo1-obraSocial-Frontend.git
 cd nombre-del-repositorio
 
 Instalar las dependencias:
