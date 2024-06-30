@@ -132,6 +132,18 @@ Crea un archivo .env en la raíz del proyecto con las variables necesarias para 
 REACT_APP_API_URL=http://localhost:8080/api
 ```
 
+**¡Antes de ejecutar la aplicacion recordar descargar el repositorio del backend!**
+https://github.com/csantander93/equipo1ObraSocialUMSA.git
+
+**El mismo cuenta con un script "data.sql" para la creacion de los datos en las distintas tablas, lo que facilita la prueba del sistema, recordar que una vez finalizado el back se debe cambiar en las properties el valos de**:
+# Generación del esquema de la base de datos
+quarkus.hibernate-orm.database.generation=drop-and-create
+por el de:
+# Generación del esquema de la base de datos
+quarkus.hibernate-orm.database.generation=validate
+
+Esto para no borrar los datos que se modificaron.
+
 4. **Ejecutar la aplicación**:
 ```bash
 npm start
@@ -141,6 +153,25 @@ npm start
 ```bash
 npm run build
 ```
+
+6. **Crear una cuenta de paciente**:
+
+Para interactuar con la página, puedes crear una cuenta seleccionando la opción de paciente y utilizando el DNI 12345678. Tanto el correo electrónico como la contraseña son a elección del usuario.
+
+URL de registro: http://localhost:8080/register
+Datos del paciente:
+DNI: 12345678
+Correo electrónico: A elección
+Contraseña: A elección
+Rol: Paciente
+Acceder a la aplicación:
+
+Después de crear tu cuenta, puedes iniciar sesión y empezar a interactuar con la aplicación.
+
+URL de inicio de sesión: http://localhost:8080/login
+Correo electrónico: El que utilizaste al registrarte
+Contraseña: La que elegiste
+
 
 Contribuir
 Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
