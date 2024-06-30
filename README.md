@@ -89,6 +89,7 @@ src
 │   └── TDoctorsListFilter.ts
 ├── views                  # Vistas principales de la aplicación
 └── App.tsx                # Componente raíz de la aplicación
+```
 
 Descripción de las carpetas principales
 clients: Contiene los clientes que se utilizan para consumir APIs externas.
