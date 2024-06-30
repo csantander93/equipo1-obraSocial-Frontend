@@ -115,7 +115,7 @@ Estilos: CSS Modules / Styled Components
 
 ```bash
 git clone https://github.com/csantander93/equipo1-obraSocial-Frontend.git
-cd nombre-del-repositorio
+cd equipo1-obraSocial-Frontend
 ```
 
 2. **Instalar las dependencias**:
