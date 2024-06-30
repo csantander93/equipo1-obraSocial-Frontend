@@ -109,33 +109,38 @@ Gestión del Estado: Redux Toolkit
 Enrutamiento: React Router
 Estilos: CSS Modules / Styled Components
 
-Instrucciones para Configuración y Ejecución
+## Instrucciones para Configuración y Ejecución
 
-Clonar el repositorio:
+1. **Clonar el repositorio**:
 
-bash
+```bash
 git clone https://github.com/csantander93/equipo1-obraSocial-Frontend.git
 cd nombre-del-repositorio
+```
 
-Instalar las dependencias:
+2. **Instalar las dependencias**:
 Asegúrate de tener Node.js y npm instalados en tu sistema.
 
-bash
+```bash
 npm install
+```
 
-Configurar las variables de entorno:
+3. **Configurar las variables de entorno**:
 Crea un archivo .env en la raíz del proyecto con las variables necesarias para la configuración. Ejemplo:
 
-bash
+```bash
 REACT_APP_API_URL=http://localhost:8080/api
+```
 
-Ejecutar la aplicación:
-bash
+4. **Ejecutar la aplicación**:
+```bash
 npm start
+```
 
-Compilar la aplicación para producción:
-bash
+5. **Compilar la aplicación para producción**:
+```bash
 npm run build
+```
 
 Contribuir
 Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
