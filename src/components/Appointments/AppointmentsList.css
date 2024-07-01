@@ -69,3 +69,10 @@
   background-color: #8f9dac; /* Cambia el fondo al color principal al pasar el mouse */
   color: #f8f8f8; /* Cambia el color de texto al pasar el mouse */
 }
+
+.filters {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}

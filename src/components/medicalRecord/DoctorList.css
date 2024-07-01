@@ -1,6 +1,3 @@
-/* styles.css (o cualquier nombre que prefieras) */
-
-/* Estilos para el contenedor principal */
 .doctor-list-container {
   margin: 20px auto;
   padding: 20px;
@@ -8,16 +5,53 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  max-width: 600px; /* Ancho máximo para centrar el contenido */
+  max-width: 600px; 
 }
 
-/* Estilos para la lista de doctores */
+.doctor-list-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.filter:last-child {
+  margin-right: 0;
+}
+
+.doctor-list-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+/*select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}*/
+
 .doctor-list {
   list-style-type: none;
   padding: 0;
 }
 
-/* Estilos para cada elemento de doctor */
 .doctor-item {
   margin-bottom: 20px;
   padding: 15px;
@@ -27,7 +61,6 @@
   transition: background-color 0.3s ease;
 }
 
-/* Estilos para los títulos */
 .doctor-name {
   margin: 0;
   font-size: 1em;
@@ -47,15 +80,13 @@
   color: #666;
 }
 
-/* Efecto hover para destacar el elemento */
 .doctor-item:hover {
   background-color: #e0e0e0;
 }
 
-/* Estilos para el mensaje de lista de especialistas */
 .specialists-message {
   text-align: center;
   margin-bottom: 20px;
   font-size: 1em;
-  color: #007bff; /* Azul resaltado */
+  color: #007bff; 
 }

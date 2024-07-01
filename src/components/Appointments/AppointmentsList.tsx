@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppointmentContext } from '../../contexts/AppointmentContext/AppointmentContext';
+import { SpecialityContext } from '../../contexts/SpecialityContext/SpecialityContext';
 import { useAuth } from '../../contexts/UserContext/AuthContext';
 import './AppointmentsList.css';
 import { MdDeleteForever } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
-import { FaFileDownload } from 'react-icons/fa';
-import { FaPlus } from "react-icons/fa";
+import { FaFileDownload, FaPlus } from 'react-icons/fa';
 import RecipeComponent from '../recipe/Recipe';
 import AppointmentService from '../../services/AppointmentService';
 import { TRecipeDelete } from '../../models/types/requests/TRecipeDelete';
@@ -15,9 +15,12 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const AppointmentList: React.FC = () => {
   const { appointments, loading, error, fetchAppointmentsUser } = useContext(AppointmentContext);
+  const { specialities } = useContext(SpecialityContext);
   const { user } = useAuth();
   const [selectedRecipeId, setSelectedRecipeId] = useState<number | null>(null);
-  const navigate = useNavigate(); // Use navigate for navigation
+  const [recipeFilter, setRecipeFilter] = useState<string>('');
+  const [specialityFilter, setSpecialityFilter] = useState<string>('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user && user.id) {
@@ -33,12 +36,10 @@ const AppointmentList: React.FC = () => {
     return <div>Error: {error}</div>;
   }
 
-  // Function to handle showing the recipe
   const handleShowRecipe = (idReceta: number) => {
     setSelectedRecipeId(idReceta);
   };
 
-  // Function to handle closing the recipe
   const handleCloseRecipe = () => {
     setSelectedRecipeId(null);
   };
@@ -71,10 +72,29 @@ const AppointmentList: React.FC = () => {
     });
   };
 
-  // Function to navigate to the NewAppointment component
   const handleRequestAppointment = () => {
     navigate('/NewAppointment');
   };
+
+  const handleRecipeFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setRecipeFilter(event.target.value);
+  };
+
+  const handleSpecialityFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSpecialityFilter(event.target.value);
+  };
+
+  const filteredAppointments = appointments.filter((appointment) => {
+    const matchesRecipeFilter =
+      (recipeFilter === 'withRecipe' && appointment.idReceta !== 0) ||
+      (recipeFilter === 'withoutRecipe' && appointment.idReceta === 0) ||
+      recipeFilter === '';
+
+    const matchesSpecialityFilter =
+      specialityFilter === '' || appointment.especialidadMedico === specialityFilter;
+
+    return matchesRecipeFilter && matchesSpecialityFilter;
+  });
 
   return (
     <div className="appointment-list-container">
@@ -84,8 +104,29 @@ const AppointmentList: React.FC = () => {
           className="request-appointment-button"
           onClick={handleRequestAppointment}
         >
-          <FaPlus style={{ verticalAlign: 'middle', color: '#5ecc6d', marginRight: '5px', fontSize: '15px' }} /> Solicitar turno
+          <FaPlus /> Solicitar turno
         </button>
+      </div>
+      <div className="filters">
+        <div className="filter">
+          <label htmlFor="recipe-filter">Estado del turno: </label>
+          <select id="recipe-filter" value={recipeFilter} onChange={handleRecipeFilterChange}>
+            <option value="">Todos</option>
+            <option value="withoutRecipe">Pendiente</option>
+            <option value="withRecipe">Finalizado</option>
+          </select>
+        </div>
+        <div className="filter">
+          <label htmlFor="speciality-filter">Especialidad: </label>
+          <select id="speciality-filter" value={specialityFilter} onChange={handleSpecialityFilterChange}>
+            <option value="">Todas</option>
+            {specialities.map((speciality) => (
+              <option key={speciality.idEspecialidad} value={speciality.nombreEspecialidad}>
+                {speciality.nombreEspecialidad}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
       <table className="appointment-list">
         <thead>
@@ -101,7 +142,7 @@ const AppointmentList: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {appointments.map((appointment) => (
+          {filteredAppointments.map((appointment) => (
             <tr key={appointment.idTurno}>
               <td>{appointment.idTurno}</td>
               <td>{appointment.nombreMedico}</td>
@@ -116,7 +157,6 @@ const AppointmentList: React.FC = () => {
                   <FaFileDownload
                     className="recipe-icon"
                     onClick={() => handleShowRecipe(appointment.idReceta)}
-                    style={{ cursor: 'pointer' }}
                   />
                 )}
               </td>
@@ -127,7 +167,6 @@ const AppointmentList: React.FC = () => {
                     <MdDeleteForever
                       className="delete-icon"
                       onClick={() => confirmDelete(appointment.idTurno)}
-                      style={{ cursor: 'pointer' }}
                     />
                   </div>
                 </td>
@@ -138,8 +177,6 @@ const AppointmentList: React.FC = () => {
           ))}
         </tbody>
       </table>
-
-      {/* Render RecipeComponent as a popup if a recipe is selected */}
       {selectedRecipeId && (
         <RecipeComponent idRecipe={selectedRecipeId} onClose={handleCloseRecipe} />
       )}
