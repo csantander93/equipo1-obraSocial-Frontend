@@ -1,19 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppointmentContext } from '../../contexts/AppointmentContext/AppointmentContext';
-import { useAuth } from '../../contexts/UserContext/AuthContext';
-import './AppointmentsList.css';
+import { AppointmentContext } from '../../../contexts/AppointmentContext/AppointmentContext';
+import { useAuth } from '../../../contexts/UserContext/AuthContext';
+import './AppointmentListPatient.css';
 import { MdDeleteForever } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
 import { FaFileDownload } from 'react-icons/fa';
 import { FaPlus } from "react-icons/fa";
-import RecipeComponent from '../recipe/Recipe';
-import AppointmentService from '../../services/AppointmentService';
-import { TRecipeDelete } from '../../models/types/requests/TRecipeDelete';
+import RecipeComponent from '../../recipe/Recipe';
+import AppointmentService from '../../../services/AppointmentService';
+import { TRecipeDelete } from '../../../models/types/requests/TRecipeDelete';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
-const AppointmentList: React.FC = () => {
+const AppointmentListPatient: React.FC = () => {
   const { appointments, loading, error, fetchAppointmentsUser } = useContext(AppointmentContext);
   const { user } = useAuth();
   const [selectedRecipeId, setSelectedRecipeId] = useState<number | null>(null);
@@ -147,4 +147,4 @@ const AppointmentList: React.FC = () => {
   );
 };
 
-export default AppointmentList;
+export default AppointmentListPatient;
