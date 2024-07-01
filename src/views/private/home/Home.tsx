@@ -1,36 +1,16 @@
-import React from 'react';
-import MenuAppBar from '../../../components/AppBar/MenuAppBar';
-import Footer from '../../../components/footer/Footer';
 import './Home.css'; // Asegúrate de importar los estilos
-import { DoctorProvider } from '../../../contexts/DoctorContext/DoctorContext';
-import { AppointmentProvider } from '../../../contexts/AppointmentContext/AppointmentContext';
-import { Route, Routes } from 'react-router-dom';
-import { protectedRoutes } from '../ProtectedRoutes';
-import { SpecialityProvider } from '../../../contexts/SpecialityContext/SpecialityContext';
+import ViewPatient from '../patientView/ViewPatient';
+import ViewDoctor from '../doctorView/ViewDoctor';
+import { useAuth } from '../../../contexts/UserContext/AuthContext';
 
 const Home: React.FC = () => {
+
+  const { user } = useAuth();
+
   return (
-    <AppointmentProvider>
-    <DoctorProvider>
-    <SpecialityProvider>
-    <div className="wrapper">
-      <header>
-        <MenuAppBar />
-      </header>
-      <main>
-        <Routes>
-            {protectedRoutes.map(({ path, component: Component }) => (
-              <Route key={path} path={path} element={<Component />} />
-              ))}
-        </Routes>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+    <div>
+      {user?.rolUsuario === 'Paciente' ? <ViewPatient /> : <ViewDoctor />}
     </div>
-    </SpecialityProvider>
-    </DoctorProvider>
-    </AppointmentProvider>
   );
 }
 

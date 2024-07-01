@@ -10,7 +10,7 @@ const Login: React.FC = () => {
   const [formData, setFormData] = useState<TSignIn>({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +26,11 @@ const Login: React.FC = () => {
     setErrorMessage(null); // Resetear el mensaje de error antes de intentar iniciar sesión
     const success = await login(formData);
     if (success) {
-      navigate('/PageWelcome');
+      if (user?.rolUsuario === 'Paciente') {
+        navigate('/PageWelcome');
+      } else if (user?.rolUsuario === 'Medico') {
+        navigate('/AppointmentListDoctor');
+      }
     } else {
       setErrorMessage('Usuario y/o contraseña incorrectos');
     }

@@ -42,7 +42,7 @@ const NewAppointment: React.FC = () => {
       try {
         await AppointmentService.assignAppointmentUser(appointmentAssignData);
         alert('Turno asignado exitosamente.');
-        navigate('/AppointmentList');
+        navigate('/AppointmentListPatient');
       } catch (error) {
         console.error('Error al asignar turno:', error);
         // Manejar el error según sea necesario
