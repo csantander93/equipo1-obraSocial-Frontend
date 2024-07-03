@@ -1,9 +1,10 @@
 import AppointmentListPatient from "../../components/Appointments/Patient/AppointmentListPatient";
 import DoctorList from "../../components/medicalRecord/DoctorList";
-import NewAppointment from "../../components/Appointments/NewAppointment";
+import NewAppointment from "../../components/Appointments/Patient/NewAppointment/NewAppointment";
 import PageWelcome from "../../components/Initial/PageWelcome";
 import AppointmentListDoctor from "../../components/Appointments/Doctor/AppointmentListDoctor";
 import CreateAppointment from "../../components/Appointments/Doctor/CreateAppointment";
+import EditAppointment from "../../components/Appointments/Patient/EditAppointment/EditAppointment";
 
 
 export const protectedRoutesPatient = [
@@ -11,6 +12,7 @@ export const protectedRoutesPatient = [
   { path: "/DoctorList", component: DoctorList, name: "DoctorList" },
   { path: "/NewAppointment", component: NewAppointment, name: "NewAppointment" },
   { path: "/PageWelcome", component: PageWelcome, name: "PageWelcome" },
+  { path: "/EditAppointment", component: EditAppointment, name: "EditAppointment" }
 ];
 
 export const protectedRoutesDoctor = [

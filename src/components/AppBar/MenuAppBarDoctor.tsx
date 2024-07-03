@@ -84,9 +84,4 @@ export default function MenuAppBarDoctor() {
       </AppBar>
     </Box>
   );
-<<<<<<< HEAD
 }
-  
-=======
-}
->>>>>>> rama-julian

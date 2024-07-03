@@ -2,13 +2,13 @@ import React, { useContext, useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
-import { SpecialityContext } from '../../contexts/SpecialityContext/SpecialityContext';
-import { DoctorContext } from '../../contexts/DoctorContext/DoctorContext';
-import { AppointmentContext } from '../../contexts/AppointmentContext/AppointmentContext';
-import { filterDoctorsBySpecialty } from '../../utils/filterDoctorsBySpecialty';
-import AppointmentService from '../../services/AppointmentService'; // Ajusta la importación según sea necesario
-import { TAppointmentAssign } from '../../models/types/requests/TAppointmentAssign';
-import { useAuth } from '../../contexts/UserContext/AuthContext'; 
+import { SpecialityContext } from '../../../../contexts/SpecialityContext/SpecialityContext';
+import { DoctorContext } from '../../../../contexts/DoctorContext/DoctorContext';
+import { AppointmentContext } from '../../../../contexts/AppointmentContext/AppointmentContext';
+import { filterDoctorsBySpecialty } from '../../../../utils/filterDoctorsBySpecialty';
+import AppointmentService from '../../../../services/AppointmentService'; // Ajusta la importación según sea necesario
+import { TAppointmentAssign } from '../../../../models/types/requests/TAppointmentAssign';
+import { useAuth } from '../../../../contexts/UserContext/AuthContext'; 
 import './NewAppointment.css';
 
 const NewAppointment: React.FC = () => {
