@@ -3,7 +3,7 @@ export type TRecipeRequest = {
   diagnostico : string;
   fecha : Date;
   tratamiento : string;
-  idMedico : number;
+  idUsuario : number;
   idPaciente : number;
   idTurno : number;
   

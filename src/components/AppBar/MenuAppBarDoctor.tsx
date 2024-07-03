@@ -32,6 +32,10 @@ export default function MenuAppBarDoctor() {
     navigate('/login'); // Redirige al usuario a la página de login
   };
 
+  const handleAppointments = () => {
+    navigate('/AppointmentListDoctor'); // Redirige a la página de AppointmentListDoctor
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -39,9 +43,9 @@ export default function MenuAppBarDoctor() {
           <img 
             src={LogoAlMedin} 
             alt="Logo" 
-            style={{ height: 80, marginRight: 10, cursor: 'pointer' }} 
+            style={{ height: 80, marginRight: 10 }} 
           />
-          <Button color="inherit">Turnos</Button>
+          <Button color="inherit" onClick={handleAppointments}>Turnos</Button>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {/* Aquí puedes agregar el título o nombre de la aplicación */}
           </Typography>
