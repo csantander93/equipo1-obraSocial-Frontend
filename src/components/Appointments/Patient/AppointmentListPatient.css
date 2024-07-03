@@ -54,6 +54,10 @@
   color: #007bff; 
 }
 
+.recipe-icon {
+  cursor: pointer;
+}
+
 .action-icons > * {
   margin: 0 5px; 
 }
@@ -64,20 +68,29 @@
   color: #ffffff; 
   font-weight: bold;
   font-family: sans-serif;
-  border: 1px solid #d3d3d3; /* Borde gris claro */
+  border: 1px solid #d3d3d3; 
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
 }
 
 .request-appointment-button:hover {
-  background-color: #8f9dac; /* Cambia el fondo al color principal al pasar el mouse */
-  color: #f8f8f8; /* Cambia el color de texto al pasar el mouse */
+  background-color: #8f9dac; 
+  color: #f8f8f8; 
 }
 
 .filters {
-  display: block;
+  display: flex; 
+  align-items: center; 
   margin-bottom: 5px;
   font-weight: bold;
   color: #555;
+}
+
+.filter {
+  margin-right: 20px; 
+}
+
+.filter label {
+  margin-right: 5px; 
 }

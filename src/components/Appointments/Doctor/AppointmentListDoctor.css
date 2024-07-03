@@ -1,0 +1,42 @@
+.appointment-list-container {
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+
+.title-and-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.create-turno-btn {
+  display: flex; /* Usa flexbox para alinear verticalmente */
+  align-items: center; /* Alinea verticalmente el contenido */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: sans-serif;
+  border: 1px solid #d3d3d3; /* Borde gris claro */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.create-turno-btn:hover {
+  background-color: #8f9dac; /* Cambia el fondo al color principal al pasar el mouse */
+  color: #f8f8f8; /* Cambia el color de texto al pasar el mouse */
+}
+
+.create-turno-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+/* Resto de estilos para la tabla y elementos dentro de la lista de turnos */

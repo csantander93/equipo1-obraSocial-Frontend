@@ -30,6 +30,7 @@ export const AppointmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const { user } = useAuth();
 
   const fetchAppointmentsUser = useCallback(async (user: TUser) => {
+
     setLoading(true);
     try {
       const data = await AppointmentService.getAppointmentListUser(user);
