@@ -33,9 +33,14 @@
   color: white;
 }
 
+
 .action-icons {
   display: flex;
   justify-content: space-around;
+}
+
+.recipe-icon {
+  cursor: pointer;
 }
 
 .delete-icon,

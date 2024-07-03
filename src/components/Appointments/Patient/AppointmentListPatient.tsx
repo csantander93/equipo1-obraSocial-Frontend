@@ -13,6 +13,7 @@ import { TRecipeDelete } from '../../../models/types/requests/TRecipeDelete';
 import { confirmAlert } from 'react-confirm-alert';
 import { SpecialityContext } from '../../../contexts/SpecialityContext/SpecialityContext';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { filterAppointments } from '../../../utils/filterAppointments';
 
 const AppointmentListPatient: React.FC = () => {
   const { appointments, loading, error, fetchAppointmentsUser } = useContext(AppointmentContext);
@@ -85,17 +86,8 @@ const AppointmentListPatient: React.FC = () => {
     setSpecialityFilter(event.target.value);
   };
 
-  const filteredAppointments = appointments.filter((appointment) => {
-    const matchesRecipeFilter =
-      (recipeFilter === 'withRecipe' && appointment.idReceta !== 0) ||
-      (recipeFilter === 'withoutRecipe' && appointment.idReceta === 0) ||
-      recipeFilter === '';
-
-    const matchesSpecialityFilter =
-      specialityFilter === '' || appointment.especialidadMedico === specialityFilter;
-
-    return matchesRecipeFilter && matchesSpecialityFilter;
-  });
+  // Usa la función de filtrado importada
+  const filteredAppointments = filterAppointments(appointments, recipeFilter, specialityFilter);
 
   return (
     <div className="appointment-list-container">
