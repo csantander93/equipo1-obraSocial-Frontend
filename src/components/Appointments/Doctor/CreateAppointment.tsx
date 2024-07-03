@@ -45,6 +45,10 @@ const CreateAppointment = () => {
         placeholderText="Seleccione una fecha"
         className="datepicker-input"
       />
+      <div className="message-box">
+        <p>Nota: Si usted quiere cargar turnos para la fecha seleccionada, tenga en cuenta que se cargarán turnos cada 20 minutos dentro de su intervalo de tiempo laboral.</p>
+        <p className='ejemplo'>Por ejemplo: si usted trabaja de 10:00 a 12:00, se le cargarían 7 turnos en la fecha seleccionada.</p>
+      </div>
       <button onClick={handleSaveAppointment}>Guardar Turnos</button>
     </div>
   );
