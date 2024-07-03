@@ -3,6 +3,7 @@ import DoctorList from "../../components/medicalRecord/DoctorList";
 import NewAppointment from "../../components/Appointments/NewAppointment";
 import PageWelcome from "../../components/Initial/PageWelcome";
 import AppointmentListDoctor from "../../components/Appointments/Doctor/AppointmentListDoctor";
+import CreateAppointment from "../../components/Appointments/Doctor/CreateAppointment";
 import { Home } from "@mui/icons-material";
 
 export const protectedRoutesPatient = [
@@ -14,4 +15,5 @@ export const protectedRoutesPatient = [
 
 export const protectedRoutesDoctor = [
   { path: "/AppointmentListDoctor", component: AppointmentListDoctor, name: "AppointmentListDoctor" },
+  { path: "/CreateAppointment", component: CreateAppointment, name: "CreateAppointment" },
 ];

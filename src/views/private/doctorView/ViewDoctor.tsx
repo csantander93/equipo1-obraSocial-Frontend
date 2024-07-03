@@ -4,9 +4,11 @@ import { Route, Routes } from 'react-router-dom';
 import MenuAppBarDoctor from '../../../components/AppBar/MenuAppBarDoctor';
 import Footer from '../../../components/footer/Footer';
 import { protectedRoutesDoctor } from '../ProtectedRoutes';
+import { AppointmentProvider } from '../../../contexts/AppointmentContext/AppointmentContext';
 
 const ViewDoctor: React.FC = () => {
   return (
+    <AppointmentProvider>
     <div className="wrapper">
       <header>
         <MenuAppBarDoctor />
@@ -22,6 +24,7 @@ const ViewDoctor: React.FC = () => {
         <Footer />
       </footer>
     </div>
+    </AppointmentProvider>
   );
 };
 

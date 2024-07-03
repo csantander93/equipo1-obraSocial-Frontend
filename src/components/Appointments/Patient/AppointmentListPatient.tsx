@@ -118,7 +118,7 @@ const AppointmentListPatient: React.FC = () => {
           </select>
         </div>
         <div className="filter">
-          <label htmlFor="speciality-filter">Especialidad: </label>
+          <label htmlFor="speciality-filter">Filtrar por especialidad: </label>
           <select id="speciality-filter" value={specialityFilter} onChange={handleSpecialityFilterChange}>
             <option value="">Todas</option>
             {specialities.map((speciality) => (
