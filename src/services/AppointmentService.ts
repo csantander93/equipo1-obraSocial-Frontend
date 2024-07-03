@@ -52,7 +52,6 @@ export default class AppointmentService {
 
   static async createAppointment20Min(dto: TAppointmentDate): Promise<void> {
     try {
-      console.log(dto)
       await httpServer.post(`${this.appointmentsController}/crearTurnosMedicoFechaC20Min`, dto );
     } catch (error) {
       throw error;

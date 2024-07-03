@@ -36,7 +36,7 @@ const RecipeFormModal: React.FC<RecipeFormModalProps> = ({ isOpen, onRequestClos
         diagnostico: diagnosis,
         tratamiento: treatment,
         idTurno: appointmentId,
-        idMedico: user.id,
+        idUsuario: user.id,
         idPaciente: appointment.idPaciente, 
       };
 
