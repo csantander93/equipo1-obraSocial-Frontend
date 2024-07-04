@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppointmentContext } from '../../../contexts/AppointmentContext/AppointmentContext';
@@ -14,6 +15,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import { SpecialityContext } from '../../../contexts/SpecialityContext/SpecialityContext';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { filterAppointments } from '../../../utils/filterAppointments';
+import { TAppointment } from '../../../models/types/entities/TAppointment';
 
 const AppointmentListPatient: React.FC = () => {
   const { appointments, loading, error, fetchAppointmentsUser } = useContext(AppointmentContext);
@@ -86,6 +88,16 @@ const AppointmentListPatient: React.FC = () => {
     setSpecialityFilter(event.target.value);
   };
 
+<<<<<<< HEAD
+=======
+  // Función para manejar la navegación hacia la edición del turno
+  const handleEditAppointment = (appointment: TAppointment) => {
+    console.log(appointment)
+    navigate(`/EditAppointment`, { state: { appointment } });
+  };  
+
+  // Usa la función de filtrado importada
+>>>>>>> rama_cris
   const filteredAppointments = filterAppointments(appointments, recipeFilter, specialityFilter);
 
   return (
@@ -140,7 +152,7 @@ const AppointmentListPatient: React.FC = () => {
               <td>{appointment.nombreMedico}</td>
               <td>{appointment.especialidadMedico}</td>
               <td>{appointment.lugarAtencion}</td>
-              <td>{new Date(appointment.fechaHora).toLocaleString()}</td>
+              <td>{new Date(appointment.fechaHora).toLocaleString('es-ES', { hour12: false })}</td>
               <td>{appointment.motivoConsulta}</td>
               <td>
                 {appointment.idReceta === 0 ? (
@@ -155,7 +167,10 @@ const AppointmentListPatient: React.FC = () => {
               {appointment.idReceta === 0 ? (
                 <td>
                   <div className="action-icons">
-                    <FiEdit className="edit-icon" />
+                    <FiEdit
+                      className="edit-icon"
+                      onClick={() => handleEditAppointment(appointment)} // Manejar la edición del turno
+                    />
                     <MdDeleteForever
                       className="delete-icon"
                       onClick={() => confirmDelete(appointment.idTurno)}

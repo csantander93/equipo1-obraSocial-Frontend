@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { TAppointmentDate } from '../../../models/types/requests/TAppointmentDate';
-import AppointmentService from '../../../services/AppointmentService';
-import { useAuth } from '../../../contexts/UserContext/AuthContext';
+import { TAppointmentDate } from '../../../../models/types/requests/TAppointmentDate';
+import AppointmentService from '../../../../services/AppointmentService';
+import { useAuth } from '../../../../contexts/UserContext/AuthContext';
 import './CreateAppointment.css'; // Importa el archivo CSS que contiene los estilos
 
 const CreateAppointment = () => {

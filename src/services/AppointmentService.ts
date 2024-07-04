@@ -4,6 +4,7 @@ import { TUser } from '../models/types/entities/TUser';
 import { TAppointmentAssign } from '../models/types/requests/TAppointmentAssign';
 import { TRecipeDelete } from '../models/types/requests/TRecipeDelete'; 
 import { TAppointmentDate } from '../models/types/requests/TAppointmentDate';
+import { TAppointmentEdit } from '../models/types/requests/TAppointmentEdit';
 
 export default class AppointmentService {
   private static appointmentsController = "/turnos";
@@ -53,6 +54,15 @@ export default class AppointmentService {
   static async createAppointment20Min(dto: TAppointmentDate): Promise<void> {
     try {
       await httpServer.post(`${this.appointmentsController}/crearTurnosMedicoFechaC20Min`, dto );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async editAppointment(dto: TAppointmentEdit): Promise<void> {
+    console.log(dto)
+    try {
+      await httpServer.put(`${this.appointmentsController}/actualizarTurno`, dto);
     } catch (error) {
       throw error;
     }
