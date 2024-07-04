@@ -7,6 +7,7 @@ import CreateAppointment from "../../components/Appointments/Doctor/CreateAppoin
 import EditAppointment from "../../components/Appointments/Patient/EditAppointment/EditAppointment";
 
 
+
 export const protectedRoutesPatient = [
   { path: "/AppointmentListPatient", component: AppointmentListPatient, name: "AppointmentListPatient" },
   { path: "/DoctorList", component: DoctorList, name: "DoctorList" },

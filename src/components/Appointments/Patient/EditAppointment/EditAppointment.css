@@ -27,12 +27,15 @@
 
 .edit-appointment-container select,
 .edit-appointment-container .react-datepicker-wrapper input,
+.edit-appointment-container textarea,
 .edit-appointment-container button {
   width: 100%; /* Asegura que los elementos ocupen todo el ancho disponible */
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;
   box-sizing: border-box;
+  color: #495057; /* Color del texto seleccionado */
+  background-color: #fff; /* Fondo del DatePicker */
 }
 
 .edit-appointment-container .react-datepicker-wrapper {
@@ -57,6 +60,14 @@
   border-radius: 5px;
   border: 1px solid #ddd;
   box-sizing: border-box;
+  color: #495057; /* Color del texto seleccionado */
+  background-color: #fff; /* Fondo del DatePicker */
+}
+
+/* Estilo para resaltar la selección en DatePicker */
+.react-datepicker__input-container input:focus {
+  border-color: #007bff; /* Cambia el borde cuando el DatePicker está seleccionado */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Agrega una sombra para resaltar */
 }
 
 .edit-appointment-container textarea {

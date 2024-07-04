@@ -90,8 +90,9 @@ const AppointmentListPatient: React.FC = () => {
 
   // Función para manejar la navegación hacia la edición del turno
   const handleEditAppointment = (appointment: TAppointment) => {
-    navigate(`/EditAppointment/${appointment}`); // Asegúrate de que la ruta coincida con tu configuración de react-router-dom
-  };
+    console.log(appointment)
+    navigate(`/EditAppointment`, { state: { appointment } });
+  };  
 
   // Usa la función de filtrado importada
   const filteredAppointments = filterAppointments(appointments, recipeFilter, specialityFilter);
