@@ -1,12 +1,13 @@
 import React from 'react';
 import './ScreenMessage.css';
-import tick from '../../images/icons/tick.png';
+import tickGif from '../../images/icons/tickgif.gif';
+import denyGif from '../../images/icons/denygif.gif';
 
 type ScreenMessageProps = {
   message: string;
   status: number;
   onClose: () => void;
-  onRedirect?: () => void; // Nueva prop para redirección
+  onRedirect?: () => void;
 };
 
 const ScreenMessage: React.FC<ScreenMessageProps> = ({ message, status, onClose, onRedirect }) => {
@@ -19,7 +20,9 @@ const ScreenMessage: React.FC<ScreenMessageProps> = ({ message, status, onClose,
   };
 
   const displayIcon = () => {
-    if (status >= 200 && status <= 226) return tick;
+    if (status >= 200 && status <= 226) return tickGif;
+    if (status >= 400) return denyGif;
+    return tickGif;
   };
 
   const handleButtonClick = () => {
@@ -32,7 +35,7 @@ const ScreenMessage: React.FC<ScreenMessageProps> = ({ message, status, onClose,
   return (
     <div className="screen-message">
       <div className="screen-message-content">
-        <img src={displayIcon()} alt="Icono de respuesta" width={30} />
+        <img src={displayIcon()} alt="Icono de respuesta" width={50} />
         <h3>{displayMessage()}</h3>
         <p>{message}</p>
         <button type="button" onClick={handleButtonClick}>Cerrar</button>
