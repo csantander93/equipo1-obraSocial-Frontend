@@ -88,8 +88,6 @@ const AppointmentListPatient: React.FC = () => {
     setSpecialityFilter(event.target.value);
   };
 
-<<<<<<< HEAD
-=======
   // Función para manejar la navegación hacia la edición del turno
   const handleEditAppointment = (appointment: TAppointment) => {
     console.log(appointment)
@@ -97,7 +95,6 @@ const AppointmentListPatient: React.FC = () => {
   };  
 
   // Usa la función de filtrado importada
->>>>>>> rama_cris
   const filteredAppointments = filterAppointments(appointments, recipeFilter, specialityFilter);
 
   return (
