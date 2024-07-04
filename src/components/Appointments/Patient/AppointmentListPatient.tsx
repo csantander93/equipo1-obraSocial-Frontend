@@ -86,7 +86,6 @@ const AppointmentListPatient: React.FC = () => {
     setSpecialityFilter(event.target.value);
   };
 
-  // Usa la función de filtrado importada
   const filteredAppointments = filterAppointments(appointments, recipeFilter, specialityFilter);
 
   return (

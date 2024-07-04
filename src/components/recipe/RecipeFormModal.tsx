@@ -7,7 +7,7 @@ import { AppointmentContext } from '../../contexts/AppointmentContext/Appointmen
 import { useAuth } from '../../contexts/UserContext/AuthContext';
 import RecipeService from '../../services/RecipeService';
 import { TRecipeRequest } from '../../models/types/requests/TRecipeRequest';
-import AppointmentListPatient from '../Appointments/Patient/AppointmentListPatient';
+
 
 interface RecipeFormModalProps {
   isOpen: boolean;
