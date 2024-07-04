@@ -6,6 +6,7 @@ import AppointmentService from '../../../../services/AppointmentService';
 import { TAppointmentEdit } from '../../../../models/types/requests/TAppointmentEdit';
 import './EditAppointment.css';
 import { AppointmentContext } from '../../../../contexts/AppointmentContext/AppointmentContext';
+import ScreenMessage from '../../../ScreenMessage/ScreenMessage';
 
 const EditAppointment: React.FC = () => {
   const location = useLocation();
@@ -20,6 +21,9 @@ const EditAppointment: React.FC = () => {
   const [selectedTime, setSelectedTime] = useState<Date | null>(null);
   const [consultationReason, setConsultationReason] = useState<string>(initialReason);
   const [availableTimes, setAvailableTimes] = useState<Date[]>([]);
+  const [message, setMessage] = useState<string>('');
+  const [showMessage, setShowMessage] = useState<boolean>(false);
+  const [messageStatus, setMessageStatus] = useState<number>(200);
 
   useEffect(() => {
     if (appointment && appointment.idMedico) {
@@ -38,7 +42,7 @@ const EditAppointment: React.FC = () => {
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
-    setSelectedTime(null); // Clear the selected time when the date changes
+    setSelectedTime(null);
   };
 
   const handleTimeChange = (time: Date) => {
@@ -53,19 +57,10 @@ const EditAppointment: React.FC = () => {
     e.preventDefault();
 
     try {
-      // Check if no changes were made
-      if (selectedDate?.toDateString() === initialDate.toDateString() &&
-          consultationReason === initialReason &&
-          !selectedTime) {
-        alert('No se han realizado cambios. ¿Desea guardar los mismos valores?');
-        return;
-      }
-
       if (!selectedDate || !selectedTime || !consultationReason) {
         throw new Error('Por favor complete todos los campos.');
       }
 
-      // Combinar fecha y hora seleccionadas
       const combinedDateTime = new Date(
         selectedDate.getFullYear(),
         selectedDate.getMonth(),
@@ -74,20 +69,27 @@ const EditAppointment: React.FC = () => {
         selectedTime.getMinutes()
       );
 
-      // Crear el DTO para enviar al servicio de edición
       const dto: TAppointmentEdit = {
         idTurno: appointment.idTurno,
-        fechaHoraNueva: combinedDateTime, // Enviar como objeto Date
+        fechaHoraNueva: combinedDateTime,
         nuevoMotivoConsulta: consultationReason,
       };
 
       await AppointmentService.editAppointment(dto);
-      alert('Turno actualizado exitosamente.');
-      navigate('/AppointmentListPatient');
+      setMessage('Turno actualizado exitosamente.');
+      setMessageStatus(200);
+      setShowMessage(true);
     } catch (error) {
       console.error('Error actualizando el turno:', error);
-      alert(`Error actualizando el turno: ${error}`);
+      setMessage('Error actualizando el turno.');
+      setMessageStatus(500);
+      setShowMessage(true);
     }
+  };
+
+  const handleCloseMessage = () => {
+    setShowMessage(false);
+    navigate('/AppointmentListPatient');
   };
 
   if (loading) {
@@ -127,9 +129,9 @@ const EditAppointment: React.FC = () => {
             onChange={handleDateChange}
             placeholderText="Seleccione una fecha"
             dateFormat="dd/MM/yyyy"
-            minDate={new Date()} // Permite seleccionar solo fechas futuras
+            minDate={new Date()}
             className="form-control"
-            includeDates={doctorAppointments.map((appointment) => new Date(appointment.fechaHora))} // Solo permite seleccionar las fechas disponibles
+            includeDates={doctorAppointments.map((appointment) => new Date(appointment.fechaHora))}
           />
         </div>
         {selectedDate && availableTimes.length > 0 && (
@@ -155,6 +157,7 @@ const EditAppointment: React.FC = () => {
         </div>
         <button type="submit" className="btn btn-primary">Actualizar Turno</button>
       </form>
+      {showMessage && <ScreenMessage message={message} status={messageStatus} onClose={handleCloseMessage} />}
     </div>
   );
 };
