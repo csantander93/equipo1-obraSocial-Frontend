@@ -57,45 +57,44 @@ La aplicación permitirá las siguientes operaciones:
 La estructura del proyecto está organizada de la siguiente manera:
 
 ```plaintext
-src
-├── clients                # Clientes para consumir APIs externas
-├── components             # Componentes reutilizables de la UI
-│   ├── AppBar
-│   ├── Appointments
-│   ├── footer
-│   ├── Initial
-│   ├── medicalRecord
-│   └── recipe
-├── contexts               # Contextos de React para el manejo del estado global
-│   ├── AppointmentContext
-│   ├── DoctorContext
-│   ├── SpecialityContext
-│   └── UserContext
-├── hooks                  # Custom hooks
-├── images                 # Imágenes y recursos estáticos
-├── models/types           # Definiciones de tipos y modelos
-│   ├── entities
-│   ├── requests
-│   └── states
-├── routers                # Configuración de enrutamiento
-│   └── AppRouter.tsx
-├── services               # Servicios para interactuar con APIs
-│   ├── AppointmentService.ts
-│   ├── DoctorService.ts
-│   ├── RecipeService.ts
-│   ├── SpecialityService.ts
-│   └── UserService.ts
-├── utils                  # Utilidades y funciones auxiliares
-│   └── TDoctorsListFilter.ts
-├── views                  # Vistas principales de la aplicación
-└── App.tsx                # Componente raíz de la aplicación
+📂 src                 // Carpeta principal que contiene todo el código fuente del proyecto
+  ├─ 📁 clients        // Clientes de la aplicación o consumidores de la API
+  ├─ 📁 components     // Componentes reutilizables de la interfaz de usuario
+  │     ├─ 📂 AppBar          // Componente para la barra de navegación superior
+  │     ├─ 📂 Appointments    // Componentes relacionados con la gestión de citas
+  │     ├─ 📂 footer          // Componente para el pie de página de la aplicación
+  │     ├─ 📂 Initial         // Componentes iniciales o de arranque de la aplicación
+  │     ├─ 📂 medicalRecord   // Componentes para la visualización y gestión de registros médicos
+  │     ├─ 📂 recipe          // Componentes relacionados con la gestión de recetas médicas
+  │     └─ 📂 ScreenMessage   // Componente para mostrar mensajes en la pantalla
+  ├─ 📁 contexts       // Manejo de contextos para compartir estados globales en la aplicación
+  │     ├─ 📂 AppointmentContext  // Contexto para manejar el estado global de citas
+  │     ├─ 📂 DoctorContext       // Contexto para manejar el estado global de información de doctores
+  │     ├─ 📂 SpecialityContext   // Contexto para manejar el estado global de especialidades médicas
+  │     └─ 📂 UserContext         // Contexto para manejar el estado global de información de usuarios
+  ├─ 📁 images         // Carpeta para almacenar recursos de imagen utilizados en la aplicación
+  ├─ 📁 models/types   // Modelos de datos y tipos utilizados en la aplicación
+  │     ├─ 📂 entities    // Definiciones de entidades de datos que representan objetos de negocio
+  │     └─ 📂 requests    // Definiciones de tipos para solicitudes API
+  ├─ 📁 routers        // Configuración de enrutamiento de la aplicación
+  │     └─ 📄 AppRouter.tsx  // Archivo principal que define las rutas de la aplicación
+  ├─ 📁 services       // Servicios que manejan la lógica del negocio y las interacciones con la API
+  │     ├─ 📄 AppointmentService.ts    // Servicio para manejar la lógica de negocio relacionada con las citas
+  │     ├─ 📄 DoctorService.ts         // Servicio para manejar la lógica de negocio relacionada con los doctores
+  │     ├─ 📄 RecipeService.ts         // Servicio para manejar la lógica de negocio relacionada con las recetas
+  │     ├─ 📄 SpecialityService.ts     // Servicio para manejar la lógica de negocio relacionada con las especialidades
+  │     └─ 📄 UserService.ts           // Servicio para manejar la lógica de negocio relacionada con los usuarios
+  ├─ 📁 utils          // Utilidades y funciones auxiliares compartidas en la aplicación
+  │     ├─ 📄 filterAppointments.ts        // Función para filtrar citas según ciertos criterios
+  │     └─ 📄 filterDoctorsBySpecialty.ts  // Función para filtrar doctores por especialidad
+  └─ 📁 views          // Vistas o pantallas de la aplicación
+
 ```
 
 Descripción de las carpetas principales
 clients: Contiene los clientes que se utilizan para consumir APIs externas.
 components: Contiene componentes reutilizables de la interfaz de usuario, organizados en carpetas según su función.
-contexts: Incluye los contextos de React que manejan el estado global de la aplicación.
-hooks: Custom hooks para lógica reutilizable en componentes.
+contexts: Incluye los contextos de React que manejan el estado global de la aplicación
 images: Imágenes y otros recursos estáticos utilizados en la aplicación.
 models/types: Definiciones de tipos y modelos TypeScript para las entidades, las solicitudes y los estados.
 routers: Configuración de las rutas de la aplicación.
