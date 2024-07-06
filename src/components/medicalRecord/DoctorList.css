@@ -1,3 +1,4 @@
+
 .doctor-list-container {
   margin: 20px auto;
   padding: 20px;
@@ -5,21 +6,30 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  max-width: 600px; 
+  max-width: 800px;
+  width: 90%;
+  margin-top: 50px;
+  min-height: 90vh; /* Altura mínima para mantener el mismo tamaño */
+  display: flex;
+  flex-direction: column;
 }
 
+/* Estilos para el título de la lista de doctores */
 .doctor-list-container h1 {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
+  font-size: 1.8em;
 }
 
+/* Estilos para los filtros de especialidad y ubicación */
 .filters {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
+/* Estilos para cada filtro individual */
 .filter {
   flex: 1;
   margin-right: 10px;
@@ -29,15 +39,15 @@
   margin-right: 0;
 }
 
-.doctor-list-container label {
+.filters label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: bold;
   color: #555;
 }
 
-/*select {
-  display: block;
+/* Estilos para los selectores de filtros */
+.doctor-list-container select {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -45,13 +55,23 @@
   font-size: 16px;
   background-color: #fff;
   color: #333;
-}*/
+  transition: border-color 0.3s ease;
+}
 
+.doctor-list-container select:hover,
+.doctor-list-container select:focus {
+  border-color: #007bff;
+}
+
+/* Estilos para la lista de doctores */
 .doctor-list {
   list-style-type: none;
   padding: 0;
+  flex: 1; /* Para que la lista ocupe todo el espacio disponible */
+  overflow-y: auto; /* Agrega scroll si la lista es muy larga */
 }
 
+/* Estilos para cada elemento de doctor en la lista */
 .doctor-item {
   margin-bottom: 20px;
   padding: 15px;
@@ -59,21 +79,17 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+  height: 120px; /* Altura fija para cada elemento */
 }
 
 .doctor-name {
   margin: 0;
-  font-size: 1em;
+  font-size: 1.2em;
   color: #333;
   font-weight: bold;
 }
 
-.doctor-specialization {
-  margin: 5px 0;
-  font-size: 1em;
-  color: #666;
-}
-
+.doctor-specialization,
 .doctor-info {
   margin: 5px 0;
   font-size: 1em;
@@ -84,9 +100,65 @@
   background-color: #e0e0e0;
 }
 
+/* Mensaje especial para los especialistas */
 .specialists-message {
   text-align: center;
   margin-bottom: 20px;
   font-size: 1em;
-  color: #007bff; 
+  color: #007bff;
+}
+
+/* Estilos específicos para pantallas más grandes (más de 768px) */
+@media (min-width: 768px) {
+  .doctor-list-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .filters {
+    margin-bottom: 50px;
+  }
+
+  .doctor-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px;
+  }
+
+  .doctor-item {
+    width: calc(50% - 20px);
+    padding: 10px;
+  }
+}
+
+/* Estilos para la paginación */
+.pagination-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-list button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-list button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-list button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
 }

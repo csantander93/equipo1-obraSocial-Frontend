@@ -1,5 +1,4 @@
-/* CreateAssignedAppointment.css */
-.container {
+.container-create-assigned-appointment {
   width: 80%;
   max-width: 500px;
   margin: 50px auto;
@@ -9,13 +8,13 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.container h1 {
+.container-create-assigned-appointment h1 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.container .form-group,
-.container .selected-patient-info {
+.container-create-assigned-appointment .form-group,
+.container-create-assigned-appointment .selected-patient-info {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -23,14 +22,14 @@
   margin-bottom: 20px;
 }
 
-.container label {
+.container-create-assigned-appointment label {
   font-weight: bold;
 }
 
-.container input[type="text"],
-.container input[type="date"],
-.container input[type="time"],
-.container textarea {
+.container-create-assigned-appointment input[type="text"],
+.container-create-assigned-appointment input[type="date"],
+.container-create-assigned-appointment input[type="time"],
+.container-create-assigned-appointment textarea {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
@@ -38,40 +37,40 @@
   box-sizing: border-box;
 }
 
-.container textarea {
+.container-create-assigned-appointment textarea {
   height: 80px;
   resize: none;
   font-family: sans-serif;
 }
 
-.container .results {
+.container-create-assigned-appointment .results {
   margin-bottom: 20px;
 }
 
-.container .results ul {
+.container-create-assigned-appointment .results ul {
   list-style-type: none;
   padding: 0;
 }
 
-.container .results li {
+.container-create-assigned-appointment .results li {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 
-.container .results li:hover {
+.container-create-assigned-appointment .results li:hover {
   background-color: #f1f1f1;
 }
 
-.container .patient-info-label {
+.container-create-assigned-appointment .patient-info-label {
   font-weight: bold;
 }
 
-.container .selected-patient-info p {
+.container-create-assigned-appointment .selected-patient-info p {
   margin: 0;
 }
 
-.container .submit-btn {
+.container-create-assigned-appointment .submit-btn {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -81,20 +80,6 @@
   cursor: pointer;
 }
 
-.container .submit-btn:hover {
+.container-create-assigned-appointment .submit-btn:hover {
   background-color: #0056b3;
 }
-
-.container .submit-btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.container .submit-btn:hover {
-  background-color: #0056b3;
-} 

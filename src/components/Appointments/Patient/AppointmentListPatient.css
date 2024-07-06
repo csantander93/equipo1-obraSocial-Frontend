@@ -26,6 +26,7 @@
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
+  width: 150px; /* Ancho fijo para todas las columnas */
 }
 
 .appointment-list th {
@@ -93,4 +94,30 @@
 
 .filter label {
   margin-right: 5px; 
+}
+
+.appointment-list-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh; 
+}
+
+.table-container {
+  flex-grow: 1; 
+  overflow-y: auto; 
+}
+
+.pagination-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: inline-block;
+  margin-top: auto; 
+}
+
+.pagination .disabled {
+  color: grey;
+  pointer-events: none;
 }

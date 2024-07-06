@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { DoctorContext } from '../../contexts/DoctorContext/DoctorContext';
 import { SpecialityContext } from '../../contexts/SpecialityContext/SpecialityContext';
 import { TDoctor } from '../../models/types/entities/TDoctor';
-import './DoctorList.css'; // Asegúrate de importar el CSS
+import './DoctorList.css'; 
 
 const DoctorList: React.FC = () => {
   const { doctors, loading: doctorsLoading, error: doctorsError, fetchDoctors } = useContext(DoctorContext);
@@ -10,6 +10,8 @@ const DoctorList: React.FC = () => {
 
   const [selectedSpeciality, setSelectedSpeciality] = useState<string>('');
   const [selectedLocation, setSelectedLocation] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<number>(1); 
+  const doctorsPerPage = 6; 
 
   useEffect(() => {
     fetchDoctors();
@@ -33,20 +35,26 @@ const DoctorList: React.FC = () => {
 
   const handleSpecialityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedSpeciality(event.target.value);
+    setCurrentPage(1); 
   };
 
   const handleLocationChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedLocation(event.target.value);
+    setCurrentPage(1); 
   };
 
+  const indexOfLastDoctor = currentPage * doctorsPerPage;
+  const indexOfFirstDoctor = indexOfLastDoctor - doctorsPerPage;
   const filteredDoctors = doctors.filter((doctor: TDoctor) => {
     return (
       (selectedSpeciality === '' || doctor.nombreEspecialidad === selectedSpeciality) &&
       (selectedLocation === '' || doctor.ubicacionConsulta === selectedLocation)
     );
-  });
+  }).slice(indexOfFirstDoctor, indexOfLastDoctor); 
 
   const locations = Array.from(new Set(doctors.map((doctor: TDoctor) => doctor.ubicacionConsulta)));
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <div className="doctor-list-container">
@@ -85,6 +93,11 @@ const DoctorList: React.FC = () => {
           </li>
         ))}
       </ul>
+      {/* Controles de paginación */}
+      <div className="pagination-list">
+        <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>Anterior</button>
+        <button onClick={() => paginate(currentPage + 1)} disabled={filteredDoctors.length < doctorsPerPage}>Siguiente</button>
+      </div>
     </div>
   );
 };

@@ -69,66 +69,68 @@ const CreateAssignedAppointment: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Crear Cita Asignada</h1>
-      <div className="form-group">
-        <label>
-          Buscar paciente por DNI o Nombre:
-          <input
-            type="text"
-            value={dni}
-            onChange={(e) => setDni(e.target.value)}
-            placeholder="Ingrese DNI o nombre"
-          />
-        </label>
-      </div>
-      {filteredPatients.length > 0 && (
-        <div className="results">
-          <h2>Resultados de búsqueda:</h2>
-          <ul>
-            {filteredPatients.map(patient => (
-              <li key={patient.idPaciente} onClick={() => handleSelectPatient(patient)}>
-                <span className="patient-info-label">Nombre Completo:</span> {patient.nombreCompleto} <br />
-                <span className="patient-info-label">Documento:</span> {patient.dni}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {selectedPatient && (
-        <div>
-          <h2>Paciente seleccionado:</h2>
-          <div className="selected-patient-info">
-            <p><span className="patient-info-label">Nombre Completo:</span> {selectedPatient.nombreCompleto}</p>
-            <p><span className="patient-info-label">Documento:</span> {selectedPatient.dni}</p>
-          </div>
-          <div className="form-group">
-            <label>
-              Seleccionar fecha:
-              <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
-            </label>
-          </div>
-          <div className="form-group">
-            <label>
-              Seleccionar hora:
-              <input type="time" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} />
-            </label>
-          </div>
-          <div className="form-group">
-            <label>
-              Motivo de consulta:
-            </label>
-            <textarea
-              value={consultaValue}
-              onChange={(e) => setConsultaValue(e.target.value)}
-              maxLength={50}
-              placeholder="Ingrese consulta aquí"
-              className="consulta-textarea"
+    <div className="container-create-assigned-appointment">
+      <div className='container'>
+        <h1>Crear Cita Asignada</h1>
+        <div className="form-group">
+          <label>
+            Buscar paciente por DNI o Nombre:
+            <input
+              type="text"
+              value={dni}
+              onChange={(e) => setDni(e.target.value)}
+              placeholder="Ingrese DNI o nombre"
             />
-          </div>
-          <button className="submit-btn" onClick={handleSubmit}>Crear Cita</button>
+          </label>
         </div>
-      )}
+        {filteredPatients.length > 0 && (
+          <div className="results">
+            <h2>Resultados de búsqueda:</h2>
+            <ul>
+              {filteredPatients.map(patient => (
+                <li key={patient.idPaciente} onClick={() => handleSelectPatient(patient)}>
+                  <span className="patient-info-label">Nombre Completo:</span> {patient.nombreCompleto} <br />
+                  <span className="patient-info-label">Documento:</span> {patient.dni}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {selectedPatient && (
+          <div>
+            <h2>Paciente seleccionado:</h2>
+            <div className="selected-patient-info">
+              <p><span className="patient-info-label">Nombre Completo:</span> {selectedPatient.nombreCompleto}</p>
+              <p><span className="patient-info-label">Documento:</span> {selectedPatient.dni}</p>
+            </div>
+            <div className="form-group">
+              <label>
+                Seleccionar fecha:
+                <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Seleccionar hora:
+                <input type="time" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Motivo de consulta:
+              </label>
+              <textarea
+                value={consultaValue}
+                onChange={(e) => setConsultaValue(e.target.value)}
+                maxLength={50}
+                placeholder="Ingrese consulta aquí"
+                className="consulta-textarea"
+              />
+            </div>
+            <button className="submit-btn" onClick={handleSubmit}>Crear Cita</button>
+          </div>
+        )}
+        </div>
       {showMessage && (
         <ScreenMessage
           message={message}
