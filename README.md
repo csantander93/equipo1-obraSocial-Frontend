@@ -17,39 +17,129 @@ La segunda parte de este proyecto se enfoca en el desarrollo del frontend de una
 
 La aplicación permitirá las siguientes operaciones:
 
-### 1. Crear turno médico
-- **Ruta de la Interfaz**: `/turnos/asignarTurno`
-- **Descripción**: Permite asignar un nuevo turno médico a un usuario especificado.
-  - Datos requeridos:
-    - ID del paciente
-    - Fecha y hora de la cita
-    - ID del médico especialista
-    - Motivo de la consulta
+### 1. Crear Turno Médico
 
-### 2. Consultar cartilla de especialistas
-- **Ruta de la Interfaz**: `/medicos/cartillaMedicos`
-- **Descripción**: Muestra la lista de médicos especialistas disponibles.
-  - Información mostrada por cada médico:
-    - Nombre del médico
-    - Especialidad médica
-    - Horarios de consulta
-    - Ubicación de la consulta
+**Ruta de la Interfaz:** /turnos/asignarTurno
 
-### 3. Actualizar turno médico
-- **Ruta de la Interfaz**: `/turnos/actualizar/:id`
-- **Descripción**: Permite actualizar la información de un turno médico existente.
-  - Datos que se pueden actualizar:
-    - Nueva fecha y hora de la cita
-    - ID del nuevo médico especialista
-    - Nuevo motivo de la consulta
+**Descripción:** Permite asignar un nuevo turno médico a un usuario especificado.
 
-### 4. Eliminar turno médico
-- **Ruta de la Interfaz**: `/turnos/darBajaTurno`
-- **Descripción**: Permite cancelar un turno médico existente.
+**Datos requeridos:**
 
-### 5. Descargar receta médica
-- **Ruta de la Interfaz**: `/recetas/traerRecetaId/:id`
-- **Descripción**: Permite a los pacientes autorizados descargar su receta médica proporcionando el ID del turno asociado.
+- ID del paciente
+- Fecha y hora de la cita
+- ID del médico especialista
+- Motivo de la consulta
+
+### 2. Consultar Cartilla de Especialistas
+
+**Ruta de la Interfaz:** /medicos/cartillaMedicos
+
+**Descripción:** Muestra la lista de médicos especialistas disponibles.
+
+**Información mostrada por cada médico:**
+
+- Nombre del médico
+- Especialidad médica
+- Horarios de consulta
+- Ubicación de la consulta
+
+### 3. Actualizar Turno Médico
+
+**Ruta de la Interfaz:** /turnos/actualizar/
+
+**Descripción:** Permite actualizar la información de un turno médico existente.
+
+**Datos que se pueden actualizar:**
+
+- Nueva fecha y hora de la cita
+- ID del nuevo médico especialista
+- Nuevo motivo de la consulta
+
+### 4. Eliminar Turno Médico
+
+**Ruta de la Interfaz:** /turnos/darBajaTurno
+
+**Descripción:** Permite cancelar un turno médico existente.
+
+### 5. Descargar Receta Médica
+
+**Ruta de la Interfaz:** /recetas/traerRecetaId/
+
+**Descripción:** Permite a los pacientes autorizados descargar su receta médica proporcionando el ID del turno asociado.
+
+### 6. Guardar Turnos Disponibles de Manera Masiva
+
+**Ruta de la Interfaz:** /turnos/crearTurnosMedicoFechaC20Min
+
+**Descripción:** Permite al médico cargar en la base de datos turnos disponibles (activo = false) cada 20 minutos, dentro de su intervalo de trabajo.
+
+### 7. Listar Turnos por Usuario
+
+**Ruta de la Interfaz:** /turnos/traerTurnosPorIdUsuario/
+
+**Descripción:** Obtiene la lista de turnos médicos asignados a un usuario específico.
+
+### 8. Listar Turnos Disponibles por Médico
+
+**Ruta de la Interfaz:** /turnos/traerTurnosDisponiblesMedico/
+
+**Descripción:** Muestra la lista de turnos disponibles para un médico específico.
+
+### 9. Crear Turnos con Intervalos de 15 Minutos
+
+**Ruta de la Interfaz:** /turnos/crearTurnosMedicoFechaC15Min
+
+**Descripción:** Permite al médico cargar turnos disponibles cada 15 minutos dentro de su intervalo de trabajo.
+
+### 10. Crear Turno Médico con Paciente
+
+**Ruta de la Interfaz:** /turnos/crearTurnoConPaciente
+
+**Descripción:** Permite al médico crear un turno específico para un paciente.
+
+### 11. Obtener Lista de Especialidades Médicas
+
+**Ruta de la Interfaz:** /especialidad/traerEspecialidades
+
+**Descripción:** Muestra la lista de especialidades médicas disponibles en el sistema.
+
+### 12. Registro de Usuarios
+
+**Ruta de la Interfaz:** /usuarios/registro
+
+**Descripción:** Permite a los nuevos usuarios registrarse en el sistema proporcionando los datos requeridos.
+
+### 13. Iniciar Sesión
+
+**Ruta de la Interfaz:** /usuarios/login
+
+**Descripción:** Permite a los usuarios existentes iniciar sesión en el sistema utilizando sus credenciales.
+
+### 14. Listar Usuarios Pacientes
+
+**Ruta de la Interfaz:** /usuarios/traerUsuariosPaciente
+
+**Descripción:** Recupera la lista de usuarios que tienen el rol de paciente en el sistema.
+
+### 15. Crear Receta Médica
+
+**Ruta de la Interfaz:** /recetas/crearReceta
+
+**Descripción:** Permite a los médicos crear una nueva receta médica para un paciente especificado.
+
+**Datos requeridos:**
+
+- ID del paciente
+- Descripción de los medicamentos
+- Indicaciones de uso
+
+### 16. Obtener Receta Médica por ID
+
+**Ruta de la Interfaz:** /recetas/traerRecetaId/
+
+**Descripción:** Permite recuperar los detalles de una receta médica específica utilizando su ID.
+
+
 
 
 ## Estructura del Proyecto
