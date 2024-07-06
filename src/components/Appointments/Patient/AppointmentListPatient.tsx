@@ -1,8 +1,8 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 import { AppointmentContext } from '../../../contexts/AppointmentContext/AppointmentContext';
-import { useAuth } from '../../../contexts/UserContext/AuthContext';
+import { useAuth } from '../../../contexts/UserContext/UserContext';
 import './AppointmentListPatient.css';
 import { MdDeleteForever } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
@@ -25,6 +25,9 @@ const AppointmentListPatient: React.FC = () => {
   const [recipeFilter, setRecipeFilter] = useState<string>('');
   const [specialityFilter, setSpecialityFilter] = useState<string>('');
   const navigate = useNavigate();
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     if (user && user.id) {
@@ -97,6 +100,18 @@ const AppointmentListPatient: React.FC = () => {
   // Usa la función de filtrado importada
   const filteredAppointments = filterAppointments(appointments, recipeFilter, specialityFilter);
 
+  const pageCount = Math.ceil(filteredAppointments.length / itemsPerPage);
+
+  const handlePageClick = (data: { selected: number }) => {
+    setCurrentPage(data.selected);
+  };
+
+  const isFirstPage = currentPage === 0;
+  const isLastPage = currentPage === pageCount - 1;
+
+  const offset = currentPage * itemsPerPage;
+  const currentItems = filteredAppointments.slice(offset, offset + itemsPerPage);
+
   return (
     <div className="appointment-list-container">
       <div className="header-container">
@@ -143,7 +158,7 @@ const AppointmentListPatient: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredAppointments.map((appointment) => (
+          {currentItems.map((appointment) => (
             <tr key={appointment.idTurno}>
               <td>{appointment.idTurno}</td>
               <td>{appointment.nombreMedico}</td>
@@ -181,6 +196,23 @@ const AppointmentListPatient: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      <ReactPaginate
+        previousLabel={'<'}
+        nextLabel={'>'}
+        breakLabel={'...'}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+        previousClassName={isFirstPage ? 'disabled' : ''}
+        nextClassName={isLastPage ? 'disabled' : ''}
+        previousLinkClassName={isFirstPage ? 'disabled' : ''}
+        nextLinkClassName={isLastPage ? 'disabled' : ''}
+        disabledClassName={'disabled'}
+      />
       {selectedRecipeId && (
         <RecipeComponent idRecipe={selectedRecipeId} onClose={handleCloseRecipe} />
       )}

@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 import { AppointmentContext } from '../../../contexts/AppointmentContext/AppointmentContext';
-import { useAuth } from '../../../contexts/UserContext/AuthContext';
+import { useAuth } from '../../../contexts/UserContext/UserContext';
 import './AppointmentListDoctor.css';
 import AppointmentService from '../../../services/AppointmentService';
 import { TRecipeDelete } from '../../../models/types/requests/TRecipeDelete';
@@ -14,11 +15,14 @@ import RecipeFormModal from '../../recipe/RecipeFormModal';
 const AppointmentListDoctor: React.FC = () => {
   const { appointments, loading, error, fetchAppointmentsUser } = useContext(AppointmentContext);
   const { user } = useAuth();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook para navegar a otras rutas
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAppointmentId, setSelectedAppointmentId] = useState<number | null>(null);
   const [recipeFilter, setRecipeFilter] = useState<string>('');
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     if (user && user.id) {
@@ -48,6 +52,10 @@ const AppointmentListDoctor: React.FC = () => {
 
   const handleCreateTurno = () => {
     navigate('/CreateAppointment');
+  };
+
+  const handleAssignTurno = () => {
+    navigate('/CreateAssignedAppointment'); // Navega a la ruta CreateAssignedAppointment
   };
 
   const confirmDelete = (idTurno: number) => {
@@ -95,14 +103,31 @@ const AppointmentListDoctor: React.FC = () => {
     return true;
   });
 
+  const pageCount = Math.ceil(filteredAppointments.length / itemsPerPage);
+
+  const handlePageClick = (data: { selected: number }) => {
+    setCurrentPage(data.selected);
+  };
+
+  const isFirstPage = currentPage === 0;
+  const isLastPage = currentPage === pageCount - 1;
+
+  const offset = currentPage * itemsPerPage;
+  const currentItems = filteredAppointments.slice(offset, offset + itemsPerPage);
+
   return (
     <div className="appointment-list-container">
       <div className="title-and-button-container">
         <h1>Lista de Turnos</h1>
+        <div className='buttons'>
         <button className="create-turno-btn" onClick={handleCreateTurno}>
           <FaPlus className="create-turno-icon" />
           Crear turnos
         </button>
+        <button className="assign-turno-btn" onClick={handleAssignTurno}>
+          Asignar turno
+        </button>
+        </div>
       </div>
       
       <div className="filters">
@@ -129,7 +154,7 @@ const AppointmentListDoctor: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredAppointments.map((appointment) => (
+          {currentItems.map((appointment) => (
             <tr key={appointment.idTurno}>
               <td>{appointment.idTurno}</td>
               <td>{appointment.nombrePaciente}</td>
@@ -162,6 +187,23 @@ const AppointmentListDoctor: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      <ReactPaginate
+        previousLabel={'<'}
+        nextLabel={'>'}
+        breakLabel={'...'}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+        previousClassName={isFirstPage ? 'disabled' : ''}
+        nextClassName={isLastPage ? 'disabled' : ''}
+        previousLinkClassName={isFirstPage ? 'disabled' : ''}
+        nextLinkClassName={isLastPage ? 'disabled' : ''}
+        disabledClassName={'disabled'}
+      />
 
       <RecipeFormModal
         isOpen={isModalOpen}

@@ -10,14 +10,24 @@
 
 .title-and-button-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Distribuye los elementos al inicio y al final */
   align-items: center;
   margin-bottom: 20px;
 }
 
-.create-turno-btn {
-  display: flex; /* Usa flexbox para alinear verticalmente */
-  align-items: center; /* Alinea verticalmente el contenido */
+.title-container {
+  flex: 1; /* Ocupa todo el espacio restante */
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column; /* Alinear los botones uno encima del otro */
+  align-items: flex-end; /* Alinear a la derecha */
+}
+
+.create-turno-btn,
+.assign-turno-btn {
+  margin-top: 10px; /* Espacio entre los botones */
   padding: 10px 20px;
   background-color: #007bff;
   color: #ffffff;
@@ -29,7 +39,8 @@
   font-size: 16px;
 }
 
-.create-turno-btn:hover {
+.create-turno-btn:hover,
+.assign-turno-btn:hover {
   background-color: #8f9dac; /* Cambia el fondo al color principal al pasar el mouse */
   color: #f8f8f8; /* Cambia el color de texto al pasar el mouse */
 }
@@ -39,4 +50,38 @@
   margin-right: 5px;
 }
 
-/* Resto de estilos para la tabla y elementos dentro de la lista de turnos */
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.pagination li a {
+  color: #007bff;
+  padding: 8px 12px;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.pagination li.disabled a {
+  color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination li a:hover:not(.active) {
+  background-color: #f0f0f0;
+}
+
+.pagination li.active a {
+  background-color: #007bff;
+  color: #fff;
+}

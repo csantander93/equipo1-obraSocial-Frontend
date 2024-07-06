@@ -1,7 +1,7 @@
 import './Home.css'; // Asegúrate de importar los estilos
 import ViewPatient from '../patientView/ViewPatient';
 import ViewDoctor from '../doctorView/ViewDoctor';
-import { useAuth } from '../../../contexts/UserContext/AuthContext';
+import { useAuth } from '../../../contexts/UserContext/UserContext';
 
 const Home: React.FC = () => {
 
