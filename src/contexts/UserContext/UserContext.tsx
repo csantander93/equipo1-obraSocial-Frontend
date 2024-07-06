@@ -88,8 +88,4 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-<<<<<<< HEAD:src/contexts/UserContext/AuthContext.tsx
 };
-=======
-};
->>>>>>> rama_cris:src/contexts/UserContext/UserContext.tsx

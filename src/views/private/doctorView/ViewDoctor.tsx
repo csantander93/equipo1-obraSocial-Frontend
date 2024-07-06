@@ -24,10 +24,6 @@ const ViewDoctor: React.FC = () => {
       </footer>
     </div>
     </AppointmentProvider>
-<<<<<<< HEAD
-    
-=======
->>>>>>> rama_cris
   );
 };
 

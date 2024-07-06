@@ -5,7 +5,7 @@ import PageWelcome from "../../components/Initial/PageWelcome";
 import AppointmentListDoctor from "../../components/Appointments/Doctor/AppointmentListDoctor";
 import CreateAppointment from "../../components/Appointments/Doctor/CreateAppointment/CreateAppointment";
 import EditAppointment from "../../components/Appointments/Patient/EditAppointment/EditAppointment";
-import CreateAssignedAppointments from '../../components/Appointments/Doctor/CreateAssignedAppointment/CreateAssignedAppointments';
+import CreateAssignedAppointment from '../../components/Appointments/Doctor/CreateAssignedAppointment/CreateAssignedAppointment';
 
 
 
@@ -20,5 +20,5 @@ export const protectedRoutesPatient = [
 export const protectedRoutesDoctor = [
   { path: "/AppointmentListDoctor", component: AppointmentListDoctor, name: "AppointmentListDoctor" },
   { path: "/CreateAppointment", component: CreateAppointment, name: "CreateAppointment" },
-  { path: "/CreateAssignedAppointment", component: CreateAssignedAppointments, name: "CreateAssignedAppointment" }
+  { path: "/CreateAssignedAppointment", component: CreateAssignedAppointment, name: "CreateAssignedAppointment" }
 ];
