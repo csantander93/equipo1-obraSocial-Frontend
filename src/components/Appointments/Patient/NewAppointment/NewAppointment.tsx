@@ -8,7 +8,7 @@ import { AppointmentContext } from '../../../../contexts/AppointmentContext/Appo
 import { filterDoctorsBySpecialty } from '../../../../utils/filterDoctorsBySpecialty';
 import AppointmentService from '../../../../services/AppointmentService'; // Ajusta la importación según sea necesario
 import { TAppointmentAssign } from '../../../../models/types/requests/TAppointmentAssign';
-import { useAuth } from '../../../../contexts/UserContext/AuthContext'; 
+import { useAuth } from '../../../../contexts/UserContext/UserContext'; 
 import ScreenMessage from '../../../ScreenMessage/ScreenMessage';
 import './NewAppointment.css';
 

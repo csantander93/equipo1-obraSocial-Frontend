@@ -60,8 +60,9 @@ export default class AppointmentService {
   }
 
   static async editAppointment(dto: TAppointmentEdit): Promise<void> {
-    console.log(dto)
+    
     try {
+      console.log(dto);
       await httpServer.put(`${this.appointmentsController}/actualizarTurno`, dto);
     } catch (error) {
       throw error;

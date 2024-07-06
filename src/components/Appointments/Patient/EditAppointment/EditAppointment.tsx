@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { formatISO, parseISO } from 'date-fns';
 import AppointmentService from '../../../../services/AppointmentService';
 import { TAppointmentEdit } from '../../../../models/types/requests/TAppointmentEdit';
 import './EditAppointment.css';
@@ -61,7 +62,8 @@ const EditAppointment: React.FC = () => {
         throw new Error('Por favor complete todos los campos.');
       }
 
-      const combinedDateTime = new Date(
+      // Combina la fecha y hora seleccionada en el huso horario local
+      const combinedDateTimeLocal = new Date(
         selectedDate.getFullYear(),
         selectedDate.getMonth(),
         selectedDate.getDate(),
@@ -69,9 +71,12 @@ const EditAppointment: React.FC = () => {
         selectedTime.getMinutes()
       );
 
+      // Convierte la fecha y hora combinada a UTC
+      const combinedDateTimeUTC = new Date(combinedDateTimeLocal.getTime() - (combinedDateTimeLocal.getTimezoneOffset() * 60000));
+
       const dto: TAppointmentEdit = {
         idTurno: appointment.idTurno,
-        fechaHoraNueva: combinedDateTime,
+        fechaHoraNueva: combinedDateTimeUTC,
         nuevoMotivoConsulta: consultationReason,
       };
 
@@ -137,7 +142,7 @@ const EditAppointment: React.FC = () => {
         {selectedDate && availableTimes.length > 0 && (
           <div>
             <label htmlFor="time">Seleccione una hora:</label>
-            <select id="time" className="form-control" onChange={(e) => handleTimeChange(new Date(e.target.value))}>
+            <select id="time" className="form-control" onChange={(e) => handleTimeChange(parseISO(e.target.value))}>
               <option value="">Seleccione un horario</option>
               {availableTimes.map((time, index) => (
                 <option key={index} value={time.toISOString()}>{time.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}</option>

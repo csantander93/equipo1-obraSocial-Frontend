@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppointmentContext } from '../../../contexts/AppointmentContext/AppointmentContext';
-import { useAuth } from '../../../contexts/UserContext/AuthContext';
+import { useAuth } from '../../../contexts/UserContext/UserContext';
 import './AppointmentListDoctor.css';
 import AppointmentService from '../../../services/AppointmentService';
 import { TRecipeDelete } from '../../../models/types/requests/TRecipeDelete';

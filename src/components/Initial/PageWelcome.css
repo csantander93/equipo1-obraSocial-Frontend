@@ -71,14 +71,15 @@
   box-sizing: border-box;
 }
 
-.contact-section form button {
-  padding: 10px 20px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
+.contact-section form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+  resize: none; /* Evita que el textarea sea redimensionable */
 }
 
 .contact-section form button:hover {
