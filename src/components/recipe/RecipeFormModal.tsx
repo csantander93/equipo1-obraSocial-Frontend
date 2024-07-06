@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './RecipeFormModal.css'; // Importa el archivo CSS aquí
 import { AppointmentContext } from '../../contexts/AppointmentContext/AppointmentContext';
-import { useAuth } from '../../contexts/UserContext/UserContext';
+import { useAuth } from '../../contexts/UserContext/AuthContext';
 import RecipeService from '../../services/RecipeService';
 import { TRecipeRequest } from '../../models/types/requests/TRecipeRequest';
 

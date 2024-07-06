@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { AppointmentContext } from '../../../contexts/AppointmentContext/AppointmentContext';
-import { useAuth } from '../../../contexts/UserContext/UserContext';
+import { useAuth } from '../../../contexts/UserContext/AuthContext';
 import './AppointmentListPatient.css';
 import { MdDeleteForever } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';

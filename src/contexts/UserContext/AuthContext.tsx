@@ -37,9 +37,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (signInForm: TSignIn) => {
     try {
       const response = await UserService.login(signInForm);
-      const userData: TUser = 
-response.data
-; // Asume que la respuesta contiene los datos del usuario
+      const userData: TUser = response.data; // Asume que la respuesta contiene los datos del usuario
       setUser(userData);
       return true;
     } catch (error) {
@@ -65,4 +63,4 @@ response.data
       {children}
     </AuthContext.Provider>
   );
-}; 
+};

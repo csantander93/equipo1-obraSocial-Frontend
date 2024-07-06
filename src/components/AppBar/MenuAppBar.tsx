@@ -9,7 +9,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
-import { useAuth } from '../../contexts/UserContext/UserContext';
+import { useAuth } from '../../contexts/UserContext/AuthContext';
 import LogoAlMedin from '../../images/LogoAlMedin.png';
 
 export default function MenuAppBar() {
