@@ -85,43 +85,37 @@ La aplicación permitirá las siguientes operaciones:
 
 **Descripción:** Muestra la lista de turnos disponibles para un médico específico.
 
-### 9. Crear Turnos con Intervalos de 15 Minutos
-
-**Ruta de la Interfaz:** /turnos/crearTurnosMedicoFechaC15Min
-
-**Descripción:** Permite al médico cargar turnos disponibles cada 15 minutos dentro de su intervalo de trabajo.
-
-### 10. Crear Turno Médico con Paciente
+### 9. Crear Turno Médico con Paciente
 
 **Ruta de la Interfaz:** /turnos/crearTurnoConPaciente
 
 **Descripción:** Permite al médico crear un turno específico para un paciente.
 
-### 11. Obtener Lista de Especialidades Médicas
+### 10. Obtener Lista de Especialidades Médicas
 
 **Ruta de la Interfaz:** /especialidad/traerEspecialidades
 
 **Descripción:** Muestra la lista de especialidades médicas disponibles en el sistema.
 
-### 12. Registro de Usuarios
+### 11. Registro de Usuarios
 
 **Ruta de la Interfaz:** /usuarios/registro
 
 **Descripción:** Permite a los nuevos usuarios registrarse en el sistema proporcionando los datos requeridos.
 
-### 13. Iniciar Sesión
+### 12. Iniciar Sesión
 
 **Ruta de la Interfaz:** /usuarios/login
 
 **Descripción:** Permite a los usuarios existentes iniciar sesión en el sistema utilizando sus credenciales.
 
-### 14. Listar Usuarios Pacientes
+### 13. Listar Usuarios Pacientes
 
 **Ruta de la Interfaz:** /usuarios/traerUsuariosPaciente
 
 **Descripción:** Recupera la lista de usuarios que tienen el rol de paciente en el sistema.
 
-### 15. Crear Receta Médica
+### 14. Crear Receta Médica
 
 **Ruta de la Interfaz:** /recetas/crearReceta
 
@@ -133,7 +127,7 @@ La aplicación permitirá las siguientes operaciones:
 - Descripción de los medicamentos
 - Indicaciones de uso
 
-### 16. Obtener Receta Médica por ID
+### 15. Obtener Receta Médica por ID
 
 **Ruta de la Interfaz:** /recetas/traerRecetaId/
 
