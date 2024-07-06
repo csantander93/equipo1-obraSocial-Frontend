@@ -21,13 +21,17 @@ const RecipeComponent: React.FC<{ idRecipe: number; onClose: () => void }> = ({ 
 
   const handleDownloadPDF = async () => {
     if (recipe) {
-      const doc = new jsPDF();
       const content = document.getElementById('recipe-content')!;
-      const canvas = await html2canvas(content);
+      content.classList.add('pdf-view');
+      const canvas = await html2canvas(content, { scale: 2 });
+      content.classList.remove('pdf-view');
       const imageData = canvas.toDataURL('image/png');
-      const imageHeight = (canvas.height * 208) / canvas.width;
-      doc.addImage(imageData, 'PNG', 0, 0, 208, imageHeight);
-      doc.save(`Receta_${recipe.idReceta}.pdf`);
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const imgProps = pdf.getImageProperties(imageData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(imageData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`Receta_${recipe.idReceta}.pdf`);
     }
   };
 
