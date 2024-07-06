@@ -1,0 +1,165 @@
+.appointment-list-container {
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  min-height: 95vh;
+}
+
+.title-and-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title-container {
+  flex: 1;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.create-turno-btn,
+.assign-turno-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: sans-serif;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.create-turno-btn:hover,
+.assign-turno-btn:hover {
+  background-color: #8f9dac;
+  color: #f8f8f8;
+}
+
+.create-turno-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.filter {
+  margin-right: 20px;
+}
+
+.filter label {
+  margin-right: 5px;
+}
+
+.appointment-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.appointment-list th,
+.appointment-list td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  width: 150px; 
+}
+
+.appointment-list th {
+  background-color: #007bff;
+  color: white;
+}
+
+.action-icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.recipe-icon,
+.delete-icon,
+.edit-icon {
+  cursor: pointer;
+}
+
+.delete-icon {
+  font-size: 20px;
+  color: #dc3545;
+}
+
+.edit-icon {
+  font-size: 20px;
+  color: #007bff;
+}
+
+.recipe-icon {
+  cursor: pointer;
+}
+
+.action-icons > * {
+  margin: 0 5px;
+}
+
+.create-recipe-btn {
+  background-color: #e0e0e0;
+  color: rgb(95, 90, 90);
+  border-radius: 5px; 
+  cursor: pointer;
+  font-size: 14px; 
+  transition: background-color 0.3s ease;
+}
+
+.create-recipe-btn:hover {
+  background-color: #adb4bd;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.pagination li a {
+  color: #007bff;
+  padding: 8px 12px;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.pagination li.disabled a {
+  color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination li a:hover:not(.active) {
+  background-color: #f0f0f0;
+}
+
+.pagination li.active a {
+  background-color: #007bff;
+  color: #fff;
+}

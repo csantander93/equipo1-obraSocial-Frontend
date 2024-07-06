@@ -1,11 +1,24 @@
-import AppointmentList from "../../components/Appointments/AppointmentsList";
+import AppointmentListPatient from "../../components/Appointments/Patient/AppointmentListPatient";
 import DoctorList from "../../components/medicalRecord/DoctorList";
-import NewAppointment from "../../components/Appointments/NewAppointment";
+import NewAppointment from "../../components/Appointments/Patient/NewAppointment/NewAppointment";
 import PageWelcome from "../../components/Initial/PageWelcome";
+import AppointmentListDoctor from "../../components/Appointments/Doctor/AppointmentListDoctor";
+import CreateAppointment from "../../components/Appointments/Doctor/CreateAppointment/CreateAppointment";
+import EditAppointment from "../../components/Appointments/Patient/EditAppointment/EditAppointment";
+import CreateAssignedAppointment from '../../components/Appointments/Doctor/CreateAssignedAppointment/CreateAssignedAppointment';
 
-export const protectedRoutes = [
-  { path: "/AppointmentList", component: AppointmentList, name: "AppointmentList" },
+
+
+export const protectedRoutesPatient = [
+  { path: "/AppointmentListPatient", component: AppointmentListPatient, name: "AppointmentListPatient" },
   { path: "/DoctorList", component: DoctorList, name: "DoctorList" },
   { path: "/NewAppointment", component: NewAppointment, name: "NewAppointment" },
-  { path: "/PageWelcome", component: PageWelcome, name: "PageWelcome" }
+  { path: "/PageWelcome", component: PageWelcome, name: "PageWelcome" },
+  { path: "/EditAppointment", component: EditAppointment, name: "EditAppointment" }
+];
+
+export const protectedRoutesDoctor = [
+  { path: "/AppointmentListDoctor", component: AppointmentListDoctor, name: "AppointmentListDoctor" },
+  { path: "/CreateAppointment", component: CreateAppointment, name: "CreateAppointment" },
+  { path: "/CreateAssignedAppointment", component: CreateAssignedAppointment, name: "CreateAssignedAppointment" }
 ];

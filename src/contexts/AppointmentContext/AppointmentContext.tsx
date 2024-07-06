@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import AppointmentService from '../../services/AppointmentService';
 import { TAppointment } from '../../models/types/entities/TAppointment';
-import { useAuth } from '../UserContext/AuthContext';
+import { useAuth } from '../UserContext/UserContext';
 import { TUser } from '../../models/types/entities/TUser';
 
 interface AppointmentContextProps {
@@ -30,6 +30,7 @@ export const AppointmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const { user } = useAuth();
 
   const fetchAppointmentsUser = useCallback(async (user: TUser) => {
+
     setLoading(true);
     try {
       const data = await AppointmentService.getAppointmentListUser(user);

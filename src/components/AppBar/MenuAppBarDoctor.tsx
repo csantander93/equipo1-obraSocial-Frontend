@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import { useAuth } from '../../contexts/UserContext/UserContext';
 import LogoAlMedin from '../../images/LogoAlMedin.png';
 
-export default function MenuAppBar() {
+export default function MenuAppBarDoctor() {
   const [auth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const navigate = useNavigate(); // Utiliza useNavigate para redirigir
@@ -32,16 +32,8 @@ export default function MenuAppBar() {
     navigate('/login'); // Redirige al usuario a la página de login
   };
 
-  const handleCartillaMedica = () => {
-    navigate('/DoctorList'); // Navega a la ruta de Cartilla Medica
-  };
-
-  const handleTurnos = () => {
-    navigate('/AppointmentListPatient'); // Navega a la ruta de Turnos
-  };
-
-  const handleLogoClick = () => {
-    navigate('/PageWelcome'); // Navega a la ruta de bienvenida (PageWelcome)
+  const handleAppointments = () => {
+    navigate('/AppointmentListDoctor'); // Redirige a la página de AppointmentListDoctor
   };
 
   return (
@@ -51,14 +43,12 @@ export default function MenuAppBar() {
           <img 
             src={LogoAlMedin} 
             alt="Logo" 
-            style={{ height: 80, marginRight: 10, cursor: 'pointer' }} 
-            onClick={handleLogoClick} 
+            style={{ height: 80, marginRight: 10 }} 
           />
+          <Button color="inherit" onClick={handleAppointments}>Turnos</Button>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {/* Aquí puedes agregar el título o nombre de la aplicación */}
           </Typography>
-          <Button color="inherit" onClick={handleCartillaMedica}>Cartilla Medica</Button>
-          <Button color="inherit" onClick={handleTurnos}>Turnos</Button>
           {auth && (
             <div>
               <IconButton

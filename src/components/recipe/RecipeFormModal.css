@@ -1,0 +1,118 @@
+.recipe-form-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.recipe-form-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.recipe-form-modal h2 {
+  margin-top: 0;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.recipe-form-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recipe-form-modal form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-form-modal form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  height: 20px;
+}
+
+/* Add this block to style the DatePicker */
+.date-picker-input {
+  width: 100%;
+  height: 35px; /* Adjusted height */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: sans-serif; /* Change font family */
+  box-sizing: border-box;
+}
+
+.date-picker-input {
+  width: 100%;
+  height: 40px;
+  resize: none;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: sans-serif; 
+}
+
+.recipe-form-modal form textarea {
+  width: 100%;
+  height: 80px;
+  resize: none;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: sans-serif; 
+}
+
+
+.recipe-form-modal form .button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.recipe-form-modal form .button-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1976d2;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.recipe-form-modal form .button-group button:hover {
+  background-color: #5c9bda;
+}
+
+.recipe-form-modal .close-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1976d2;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.recipe-form-modal .close-button:hover {
+  background-color: #5c9bda;
+}

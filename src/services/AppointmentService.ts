@@ -3,6 +3,9 @@ import { TAppointment } from '../models/types/entities/TAppointment';
 import { TUser } from '../models/types/entities/TUser';
 import { TAppointmentAssign } from '../models/types/requests/TAppointmentAssign';
 import { TRecipeDelete } from '../models/types/requests/TRecipeDelete'; 
+import { TAppointmentDate } from '../models/types/requests/TAppointmentDate';
+import { TAppointmentEdit } from '../models/types/requests/TAppointmentEdit';
+import { TAppointmentWithPatient } from '../models/types/requests/TAppointmentWithPatient';
 
 export default class AppointmentService {
   private static appointmentsController = "/turnos";
@@ -34,11 +37,46 @@ export default class AppointmentService {
   }
 
   static async assignAppointmentUser(dto: TAppointmentAssign): Promise<void> {
-    console.log(dto)
     try {
       await httpServer.put(`${this.appointmentsController}/asignarTurno`, dto );
     } catch (error) {
       throw error;
     }
   }
+
+  static async createAppointment15Min(dto: TAppointmentDate): Promise<void> {
+    try {
+      await httpServer.post(`${this.appointmentsController}/crearTurnosMedicoFechaC15Min`, dto );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async createAppointment20Min(dto: TAppointmentDate): Promise<void> {
+    try {
+      await httpServer.post(`${this.appointmentsController}/crearTurnosMedicoFechaC20Min`, dto );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async editAppointment(dto: TAppointmentEdit): Promise<void> {
+    
+    try {
+      console.log(dto);
+      await httpServer.put(`${this.appointmentsController}/actualizarTurno`, dto);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async createAppointmentWithPatient(dto: TAppointmentWithPatient): Promise<void> {
+    try {
+      await httpServer.post(`${this.appointmentsController}/crearTurnoConPaciente`, dto );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  
 }

@@ -2,13 +2,14 @@ import React, { useContext, useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
-import { SpecialityContext } from '../../contexts/SpecialityContext/SpecialityContext';
-import { DoctorContext } from '../../contexts/DoctorContext/DoctorContext';
-import { AppointmentContext } from '../../contexts/AppointmentContext/AppointmentContext';
-import { filterDoctorsBySpecialty } from '../../utils/TDoctorsListFilter';
-import AppointmentService from '../../services/AppointmentService'; // Ajusta la importación según sea necesario
-import { TAppointmentAssign } from '../../models/types/requests/TAppointmentAssign';
-import { useAuth } from '../../contexts/UserContext/AuthContext'; 
+import { SpecialityContext } from '../../../../contexts/SpecialityContext/SpecialityContext';
+import { DoctorContext } from '../../../../contexts/DoctorContext/DoctorContext';
+import { AppointmentContext } from '../../../../contexts/AppointmentContext/AppointmentContext';
+import { filterDoctorsBySpecialty } from '../../../../utils/filterDoctorsBySpecialty';
+import AppointmentService from '../../../../services/AppointmentService'; // Ajusta la importación según sea necesario
+import { TAppointmentAssign } from '../../../../models/types/requests/TAppointmentAssign';
+import { useAuth } from '../../../../contexts/UserContext/UserContext'; 
+import ScreenMessage from '../../../ScreenMessage/ScreenMessage';
 import './NewAppointment.css';
 
 const NewAppointment: React.FC = () => {
@@ -23,6 +24,9 @@ const NewAppointment: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedAppointmentId, setSelectedAppointmentId] = useState<number | null>(null);
   const [consultationReason, setConsultationReason] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
+  const [showMessage, setShowMessage] = useState<boolean>(false);
+  const [messageStatus, setMessageStatus] = useState<number>(200); // Estado para manejar el estado del mensaje
   const { user } = useAuth();
 
   useEffect(() => {
@@ -41,15 +45,23 @@ const NewAppointment: React.FC = () => {
 
       try {
         await AppointmentService.assignAppointmentUser(appointmentAssignData);
-        alert('Turno asignado exitosamente.');
-        navigate('/AppointmentList');
+        setMessage('Turno asignado exitosamente.');
+        setMessageStatus(200);
+        setShowMessage(true);
       } catch (error) {
         console.error('Error al asignar turno:', error);
-        // Manejar el error según sea necesario
+        setMessage('Error al asignar turno.');
+        setMessageStatus(500);
+        setShowMessage(true);
       }
     } else {
       console.log('Por favor complete todos los campos.');
     }
+  };
+
+  const handleCloseMessage = () => {
+    setShowMessage(false);
+    navigate('/AppointmentListPatient');
   };
 
   if (specialitiesLoading || doctorsLoading || appointmentsLoading) {
@@ -178,6 +190,7 @@ const NewAppointment: React.FC = () => {
         )}
         <button type="submit">Confirmar</button>
       </form>
+      {showMessage && <ScreenMessage message={message} status={messageStatus} onClose={handleCloseMessage} />}
     </div>
   );
 };

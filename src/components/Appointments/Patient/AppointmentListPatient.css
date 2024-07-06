@@ -26,6 +26,7 @@
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
+  width: 150px; /* Ancho fijo para todas las columnas */
 }
 
 .appointment-list th {
@@ -33,9 +34,14 @@
   color: white;
 }
 
+
 .action-icons {
   display: flex;
   justify-content: space-around;
+}
+
+.recipe-icon {
+  cursor: pointer;
 }
 
 .delete-icon,
@@ -49,6 +55,10 @@
   color: #007bff; 
 }
 
+.recipe-icon {
+  cursor: pointer;
+}
+
 .action-icons > * {
   margin: 0 5px; 
 }
@@ -59,13 +69,55 @@
   color: #ffffff; 
   font-weight: bold;
   font-family: sans-serif;
-  border: 1px solid #d3d3d3; /* Borde gris claro */
+  border: 1px solid #d3d3d3; 
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
 }
 
 .request-appointment-button:hover {
-  background-color: #8f9dac; /* Cambia el fondo al color principal al pasar el mouse */
-  color: #f8f8f8; /* Cambia el color de texto al pasar el mouse */
+  background-color: #8f9dac; 
+  color: #f8f8f8; 
+}
+
+.filters {
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.filter {
+  margin-right: 20px; 
+}
+
+.filter label {
+  margin-right: 5px; 
+}
+
+.appointment-list-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh; 
+}
+
+.table-container {
+  flex-grow: 1; 
+  overflow-y: auto; 
+}
+
+.pagination-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: inline-block;
+  margin-top: auto; 
+}
+
+.pagination .disabled {
+  color: grey;
+  pointer-events: none;
 }
