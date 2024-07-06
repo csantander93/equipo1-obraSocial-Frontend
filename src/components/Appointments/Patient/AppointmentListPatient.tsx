@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { AppointmentContext } from '../../../contexts/AppointmentContext/AppointmentContext';
-import { useAuth } from '../../../contexts/UserContext/AuthContext';
+import { useAuth } from '../../../contexts/UserContext/UserContext';
 import './AppointmentListPatient.css';
 import { MdDeleteForever } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
@@ -93,7 +93,7 @@ const AppointmentListPatient: React.FC = () => {
 
   // Función para manejar la navegación hacia la edición del turno
   const handleEditAppointment = (appointment: TAppointment) => {
-    console.log(appointment)
+    //console.log(appointment)
     navigate(`/EditAppointment`, { state: { appointment } });
   };  
 

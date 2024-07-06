@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { TAppointmentDate } from '../../../../models/types/requests/TAppointmentDate';
 import AppointmentService from '../../../../services/AppointmentService';
-import { useAuth } from '../../../../contexts/UserContext/AuthContext';
+import { useAuth } from '../../../../contexts/UserContext/UserContext';
 import ScreenMessage from '../../../ScreenMessage/ScreenMessage';
 
 const CreateAppointment = () => {

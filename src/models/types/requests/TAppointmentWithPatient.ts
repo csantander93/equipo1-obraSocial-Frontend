@@ -1,6 +1,6 @@
 export type TAppointmentWithPatient = {
 
-  idMedico: number;
+  idUsuario: number;
   idPaciente: number;
   fecha_hora: Date;
   motivoConsulta: string;
