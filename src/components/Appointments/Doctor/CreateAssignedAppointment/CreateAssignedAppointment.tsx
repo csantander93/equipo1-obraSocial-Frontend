@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importar useHistory
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../../contexts/UserContext/UserContext';
 import AppointmentService from '../../../../services/AppointmentService';
 import { TUserPatient } from '../../../../models/types/entities/TUserPatient';
 import { TAppointmentWithPatient } from '../../../../models/types/requests/TAppointmentWithPatient';
-import './CreateAssignedAppointment.css'; // Importar el archivo CSS
+import './CreateAssignedAppointment.css';
+import ScreenMessage from '../../../ScreenMessage/ScreenMessage';
 
 const CreateAssignedAppointment: React.FC = () => {
   const { user, userPatients, fetchUserPatients } = useAuth();
-  const navigate = useNavigate(); // Obtener el objeto history para la navegación
-  const [dni, setDni] = useState<string>(''); // Inicializar como string vacío
+  const navigate = useNavigate();
+  const [dni, setDni] = useState<string>('');
   const [filteredPatients, setFilteredPatients] = useState<TUserPatient[]>([]);
   const [selectedPatient, setSelectedPatient] = useState<TUserPatient | null>(null);
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('');
-  const [consultaValue, setConsultaValue] = useState<string>(''); // Estado para el valor de la consulta
+  const [consultaValue, setConsultaValue] = useState<string>('');
+  const [showMessage, setShowMessage] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>('');
+  const [status, setStatus] = useState<number>(0);
 
   useEffect(() => {
     if (userPatients.length === 0) {
@@ -25,7 +29,7 @@ const CreateAssignedAppointment: React.FC = () => {
   useEffect(() => {
     if (dni) {
       const results = userPatients.filter(patient =>
-        patient.dni.toLowerCase().includes(dni.toLowerCase()) || 
+        patient.dni.toLowerCase().includes(dni.toLowerCase()) ||
         patient.nombreCompleto.toLowerCase().includes(dni.toLowerCase())
       );
       setFilteredPatients(results);
@@ -37,7 +41,7 @@ const CreateAssignedAppointment: React.FC = () => {
   const handleSelectPatient = (patient: TUserPatient) => {
     setSelectedPatient(patient);
     setFilteredPatients([]);
-    setDni(''); // Limpiar el campo de búsqueda después de seleccionar
+    setDni('');
   };
 
   const handleSubmit = async () => {
@@ -46,14 +50,18 @@ const CreateAssignedAppointment: React.FC = () => {
         idUsuario: user.id,
         idPaciente: selectedPatient.idPaciente,
         fecha_hora: new Date(`${selectedDate}T${selectedTime}:00`),
-        motivoConsulta: consultaValue // Usar el valor del textarea para el motivo de la consulta
+        motivoConsulta: consultaValue
       };
       try {
         await AppointmentService.createAppointmentWithPatient(appointmentDTO);
-        alert('Cita creada exitosamente');
-        navigate('/AppointmentListDoctor'); // Navegar a la ruta AppointmentListDoctor después de crear la cita
+        setMessage('Cita creada exitosamente');
+        setStatus(200);
+        setShowMessage(true);
       } catch (error) {
         console.error('Error creando la cita:', error);
+        setMessage('Error creando la cita');
+        setStatus(500);
+        setShowMessage(true);
       }
     } else {
       alert('El valor de la consulta debe tener menos de 50 caracteres.');
@@ -120,6 +128,14 @@ const CreateAssignedAppointment: React.FC = () => {
           </div>
           <button className="submit-btn" onClick={handleSubmit}>Crear Cita</button>
         </div>
+      )}
+      {showMessage && (
+        <ScreenMessage
+          message={message}
+          status={status}
+          onClose={() => setShowMessage(false)}
+          onRedirect={() => navigate('/AppointmentListDoctor')}
+        />
       )}
     </div>
   );

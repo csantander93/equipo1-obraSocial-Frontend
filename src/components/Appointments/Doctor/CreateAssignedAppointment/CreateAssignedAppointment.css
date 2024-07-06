@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/* CreateAssignedAppointment.css */
+>>>>>>> dev
 .container {
   width: 80%;
   max-width: 500px;
@@ -68,6 +72,23 @@
 
 .container .selected-patient-info p {
   margin: 0;
+<<<<<<< HEAD
+=======
+}
+
+.container .submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container .submit-btn:hover {
+  background-color: #0056b3;
+>>>>>>> dev
 }
 
 .container .submit-btn {
