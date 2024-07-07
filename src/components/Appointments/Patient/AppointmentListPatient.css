@@ -113,7 +113,7 @@
 }
 
 .pagination {
-  display: inline-block;
+  display: flex;
   margin-top: auto; 
 }
 
@@ -121,3 +121,4 @@
   color: grey;
   pointer-events: none;
 }
+

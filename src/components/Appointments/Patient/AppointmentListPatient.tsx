@@ -16,6 +16,7 @@ import { SpecialityContext } from '../../../contexts/SpecialityContext/Specialit
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { filterAppointments } from '../../../utils/filterAppointments';
 import { TAppointment } from '../../../models/types/entities/TAppointment';
+import ReasonConsultPopup from '../../popup/ReasonConsultPopUp'; // Importar el componente popup
 
 const AppointmentListPatient: React.FC = () => {
   const { appointments, loading, error, fetchAppointmentsUser } = useContext(AppointmentContext);
@@ -24,10 +25,12 @@ const AppointmentListPatient: React.FC = () => {
   const [selectedRecipeId, setSelectedRecipeId] = useState<number | null>(null);
   const [recipeFilter, setRecipeFilter] = useState<string>('');
   const [specialityFilter, setSpecialityFilter] = useState<string>('');
-  const navigate = useNavigate();
-
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null); // Estado para el tooltip
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 10;
+  const [showReasonPopup, setShowReasonPopup] = useState<boolean>(false); // Estado para mostrar el popup
+  const [selectedMotivoConsulta, setSelectedMotivoConsulta] = useState<string>(''); // Estado para el motivo de consulta seleccionado
+  const [itemsPerPage, setItemsPerPage] = useState(10); // Estado para el número de items por página
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user && user.id) {
@@ -91,13 +94,20 @@ const AppointmentListPatient: React.FC = () => {
     setSpecialityFilter(event.target.value);
   };
 
-  // Función para manejar la navegación hacia la edición del turno
   const handleEditAppointment = (appointment: TAppointment) => {
-    //console.log(appointment)
     navigate(`/EditAppointment`, { state: { appointment } });
-  };  
+  };
 
-  // Usa la función de filtrado importada
+  const handleOpenReasonPopup = (motivo: string) => {
+    setSelectedMotivoConsulta(motivo);
+    setShowReasonPopup(true);
+  };
+
+  const handleCloseReasonPopup = () => {
+    setSelectedMotivoConsulta('');
+    setShowReasonPopup(false);
+  };
+
   const filteredAppointments = filterAppointments(appointments, recipeFilter, specialityFilter);
 
   const pageCount = Math.ceil(filteredAppointments.length / itemsPerPage);
@@ -158,14 +168,20 @@ const AppointmentListPatient: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {currentItems.map((appointment) => (
-            <tr key={appointment.idTurno}>
+          {currentItems.map((appointment, index) => (
+            <tr key={appointment.idTurno}
+                onMouseEnter={() => setHoveredRow(index)}
+                onMouseLeave={() => setHoveredRow(null)}>
               <td>{appointment.idTurno}</td>
               <td>{appointment.nombreMedico}</td>
               <td>{appointment.especialidadMedico}</td>
               <td>{appointment.lugarAtencion}</td>
               <td>{new Date(appointment.fechaHora).toLocaleString('es-ES', { hour12: false })}</td>
-              <td>{appointment.motivoConsulta}</td>
+              <td className="motivo-consulta">
+                <button className="consultation-reason-button" onClick={() => handleOpenReasonPopup(appointment.motivoConsulta)}>
+                  Ver motivo
+                </button>
+              </td>
               <td>
                 {appointment.idReceta === 0 ? (
                   <span>No hay receta</span>
@@ -181,7 +197,7 @@ const AppointmentListPatient: React.FC = () => {
                   <div className="action-icons">
                     <FiEdit
                       className="edit-icon"
-                      onClick={() => handleEditAppointment(appointment)} // Manejar la edición del turno
+                      onClick={() => handleEditAppointment(appointment)} 
                     />
                     <MdDeleteForever
                       className="delete-icon"
@@ -213,6 +229,11 @@ const AppointmentListPatient: React.FC = () => {
         nextLinkClassName={isLastPage ? 'disabled' : ''}
         disabledClassName={'disabled'}
       />
+
+      {showReasonPopup && (
+        <ReasonConsultPopup motivo={selectedMotivoConsulta} onClose={handleCloseReasonPopup} />
+      )}
+
       {selectedRecipeId && (
         <RecipeComponent idRecipe={selectedRecipeId} onClose={handleCloseRecipe} />
       )}
